@@ -5,7 +5,7 @@ import { useTypewriter, Cursor } from 'react-simple-typewriter';
 
 
 export default function Main() {
-    
+
     const [top, setTop] = useState(5 + 'vh');
     useEffect(() => {
         AOS.init({ duration: 800 });
@@ -43,12 +43,12 @@ export default function Main() {
         Wback(e);
         scroll(sectionRef);
     };
-    const [rotate,setRotate]=useState(false);
-const box=document.querySelector('.A_box');
-    const Rotate=()=>{
+    const [rotate, setRotate] = useState(false);
+    const box = document.querySelector('.A_box');
+    const Rotate = () => {
         setRotate(!rotate);
-        
-        (rotate?(box.style.height='8vh'):(box.style.height='auto'))
+
+        (rotate ? (box.style.height = '8vh') : (box.style.height = 'auto'))
         console.log('clicked')
     }
 
@@ -82,7 +82,7 @@ const box=document.querySelector('.A_box');
                         <span className="custom-cursor"><Cursor cursorStyle="." /></span>
                     </div>
                     <div className="identity">
-                        <div className="photo"><img src='https://i.pinimg.com/736x/b2/ad/b9/b2adb9fdd313254effbc887d9e28e9ad.jpg' alt='photo' /></div>
+                        <div className="photo"><img src='https://i.pinimg.com/736x/b2/ad/b9/b2adb9fdd313254effbc887d9e28e9ad.jpg' alt='myidentity' /></div>
                         <div className="write">
                             <p style={{ fontSize: '20px' }}>Hi myself kasam, all the way from Nepal.</p>
                             <h1 >I'm a <span style={{ color: 'red' }}>{am} <Cursor /></span></h1>
@@ -90,16 +90,16 @@ const box=document.querySelector('.A_box');
                     </div>
                     <div className="accounts">
                         <a href="https://www.facebook.com/kasam.bhusal.5" target='_blank' rel="noopener noreferrer"><img className='Alogo' src='https://cdn-icons-png.flaticon.com/512/2175/2175193.png' alt='fb' /></a>
-                        <a href="#"><img className='Alogo' src='https://www.svgrepo.com/show/364604/instagram-logo-fill.svg' alt='insta' /></a>
-                        <a href="#"><img className='Alogo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fj1vqat9XLO4cFwOG1uFqLXYDcISiYil2w&s' alt='insta' /></a>
+                        <a href="https://www.facebook.com/kasam.bhusal.5"><img className='Alogo' src='https://www.svgrepo.com/show/364604/instagram-logo-fill.svg' alt='insta' /></a>
+                        <a href="https://www.facebook.com/kasam.bhusal.5"><img className='Alogo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fj1vqat9XLO4cFwOG1uFqLXYDcISiYil2w&s' alt='insta' /></a>
                     </div>
-                    <div style={{minWidth:'94%'}} className='text-center'>
-                        <h1 style={{textAlign:'center',margin:'20vh 0 7vh 0',color:'green'}}>Hands-on Experience with</h1>
-                        <div style={{minWidth:'94%',display:'flex',flexWrap:'wrap',padding:'0 auto',gap:'100px'}}>
-                            <span className='experience'> <img style={{width:'100%',height:'100%'}}  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEc9A_S6BPxCDRp5WjMFEfXrpCu1ya2OO-Lw&s" alt="experience_pic" /></span>
-                            <span className='experience'> <img  style={{width:'100%',height:'100%'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="experience_pic" /></span>
-                            <span className='experience'> <img  style={{width:'100%',height:'100%'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png" alt="experience_pic" /></span>
-                            <span className='experience'> <img  style={{width:'100%',height:'100%'}} src="https://static-00.iconduck.com/assets.00/react-original-wordmark-icon-840x1024-vhmauxp6.png" alt="experience_pic" /></span>
+                    <div style={{ minWidth: '94%' }} className='text-center'>
+                        <h1 style={{ textAlign: 'center', margin: '20vh 0 7vh 0', color: 'green' }}>Hands-on Experience with</h1>
+                        <div style={{ minWidth: '94%', display: 'flex', flexWrap: 'wrap', padding: '0 auto', gap: '100px' }}>
+                            <span className='experience'> <img style={{ width: '100%', height: '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEc9A_S6BPxCDRp5WjMFEfXrpCu1ya2OO-Lw&s" alt="experience_pic" /></span>
+                            <span className='experience'> <img style={{ width: '100%', height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="experience_pic" /></span>
+                            <span className='experience'> <img style={{ width: '100%', height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png" alt="experience_pic" /></span>
+                            <span className='experience'> <img style={{ width: '100%', height: '100%' }} src="https://static-00.iconduck.com/assets.00/react-original-wordmark-icon-840x1024-vhmauxp6.png" alt="experience_pic" /></span>
                         </div>
                     </div>
                 </div>
@@ -124,56 +124,56 @@ const box=document.querySelector('.A_box');
                 <div className="achievements" ref={section3}>
                     <h2 className='about_word'>Achievements</h2>
 
-                    <div style={{width:'100%',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',padding:'30px 0'}}>
-                        
-                        <div className='A_box' style={{overflowY:'hidden',width:'80%',height:'8vh',border:'2px solid black',borderRadius:'30px',transition:'height 1s ease'}}>
-                            <div style={{alignItems:'center', display:'flex',height:'8vh',width:'100%'}}>
-                        <span style={{width:'95%'}}>
-                            <h2 style={{padding:'0 15px'}}>
-                                In 10<sup>th</sup> Vacation, I had joined in 3 months Intership program.
-                            </h2>
-                        </span>
-                        <ion-icon  style={{cursor:'pointer'}}size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
-                        </div>
-                        <div style={{padding:'20px'}}>
+                    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '30px 0' }}>
 
-                        <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
+                        <div className='A_box' style={{ overflowY: 'hidden', width: '80%', height: '8vh', border: '2px solid black', borderRadius: '30px', transition: 'height 1s ease' }}>
+                            <div style={{ alignItems: 'center', display: 'flex', height: '8vh', width: '100%' }}>
+                                <span style={{ width: '95%' }}>
+                                    <h2 style={{ padding: '0 15px' }}>
+                                        In 10<sup>th</sup> Vacation, I had joined in 3 months Intership program.
+                                    </h2>
+                                </span>
+                                <ion-icon style={{ cursor: 'pointer' }} size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
+                            </div>
+                            <div style={{ padding: '20px' }}>
 
-                        </div>
-                        </div>
+                                <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
 
-
-                        <div className='A_box' style={{overflowY:'hidden',width:'80%',height:'8vh',border:'2px solid black',borderRadius:'30px',transition:'height 1s ease'}}>
-                            <div style={{alignItems:'center', display:'flex',height:'8vh',width:'100%'}}>
-                        <span style={{width:'95%'}}>
-                            <h2 style={{padding:'0 15px'}}>
-                                In 11<sup>th</sup> Vacation, I had build a website for student use.
-                            </h2>
-                        </span>
-                        <ion-icon  style={{cursor:'pointer'}}size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
-                        </div>
-                        <div style={{padding:'20px'}}>
-
-                        <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
-
-                        </div>
+                            </div>
                         </div>
 
 
-                        <div className='A_box' style={{overflowY:'hidden',width:'80%',height:'8vh',border:'2px solid black',borderRadius:'30px',transition:'height 1s ease'}}>
-                            <div style={{alignItems:'center', display:'flex',height:'8vh',width:'100%'}}>
-                        <span style={{width:'95%'}}>
-                            <h2 style={{padding:'0 15px'}}>
-                                After 12<sup>th</sup> examination, I had joined in 6 months Intership program.
-                            </h2>
-                        </span>
-                        <ion-icon  style={{cursor:'pointer'}}size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
-                        </div>
-                        <div style={{padding:'20px'}}>
+                        <div className='A_box' style={{ overflowY: 'hidden', width: '80%', height: '8vh', border: '2px solid black', borderRadius: '30px', transition: 'height 1s ease' }}>
+                            <div style={{ alignItems: 'center', display: 'flex', height: '8vh', width: '100%' }}>
+                                <span style={{ width: '95%' }}>
+                                    <h2 style={{ padding: '0 15px' }}>
+                                        In 11<sup>th</sup> Vacation, I had build a website for student use.
+                                    </h2>
+                                </span>
+                                <ion-icon style={{ cursor: 'pointer' }} size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
+                            </div>
+                            <div style={{ padding: '20px' }}>
 
-                        <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
+                                <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
 
+                            </div>
                         </div>
+
+
+                        <div className='A_box' style={{ overflowY: 'hidden', width: '80%', height: '8vh', border: '2px solid black', borderRadius: '30px', transition: 'height 1s ease' }}>
+                            <div style={{ alignItems: 'center', display: 'flex', height: '8vh', width: '100%' }}>
+                                <span style={{ width: '95%' }}>
+                                    <h2 style={{ padding: '0 15px' }}>
+                                        After 12<sup>th</sup> examination, I had joined in 6 months Intership program.
+                                    </h2>
+                                </span>
+                                <ion-icon style={{ cursor: 'pointer' }} size="large" name="caret-down-outline" onClick={Rotate}></ion-icon>
+                            </div>
+                            <div style={{ padding: '20px' }}>
+
+                                <h3>This is extra.dfjio Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore? Sit sunt temporibus exercitationem nihil laboriosam eaque quaerat et officia expedita aliquam deserunt dignissimos sapiente a, incidunt accusantium. Possimus, aspernatur?</h3>
+
+                            </div>
                         </div>
 
                     </div>
@@ -181,10 +181,10 @@ const box=document.querySelector('.A_box');
 
 
 
-                    
+
                 </div>
                 <div className="lessons" ref={section4}>
-                <h2 className='about_word'>Lessons</h2>
+                    <h2 className='about_word'>Lessons</h2>
                 </div>
                 <div className="message" ref={section5}>
                     <h2 className='about_word'>This is the place for message.</h2>

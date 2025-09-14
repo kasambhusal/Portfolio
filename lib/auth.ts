@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs"
 import { db } from "./db"
+export const runtime = "nodejs"
+import crypto from "crypto"
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-this"
 
@@ -47,7 +49,6 @@ export async function createToken(user: AuthUser): Promise<string> {
   const encodedHeader = base64UrlEncode(JSON.stringify(header))
   const encodedPayload = base64UrlEncode(JSON.stringify(payload))
 
-  const crypto = await import("crypto")
   const signature = crypto
     .createHmac("sha256", JWT_SECRET)
     .update(`${encodedHeader}.${encodedPayload}`)
@@ -69,7 +70,6 @@ export async function verifyToken(token: string): Promise<AuthUser | null> {
     }
 
     // Verify signature
-    const crypto = await import("crypto")
     const expectedSignature = crypto
       .createHmac("sha256", JWT_SECRET)
       .update(`${encodedHeader}.${encodedPayload}`)

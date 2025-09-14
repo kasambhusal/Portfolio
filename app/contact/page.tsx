@@ -80,12 +80,12 @@ export default function ContactPage() {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/kasam",
+      href: "https://github.com/kasambhusal",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/kasambhusal",
+      href: "https://www.linkedin.com/in/kasam-bhusal/",
     },
     {
       icon: Mail,

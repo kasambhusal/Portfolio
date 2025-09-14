@@ -21,7 +21,7 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
               </Link>
               <Link
-                href="https://github.com/kasam"
+                href="https://github.com/kasambhusal"
                 className="p-2 rounded-full glass dark:glass-dark hover:scale-110 transition-all duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -29,7 +29,7 @@ export function Footer() {
                 <Github className="h-4 w-4" />
               </Link>
               <Link
-                href="https://linkedin.com/in/kasambhusal"
+                href="https://www.linkedin.com/in/kasam-bhusal/"
                 className="p-2 rounded-full glass dark:glass-dark hover:scale-110 transition-all duration-300"
                 target="_blank"
                 rel="noopener noreferrer"

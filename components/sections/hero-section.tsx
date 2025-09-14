@@ -118,12 +118,12 @@ export function HeroSection() {
                 label: "Email",
               },
               {
-                href: "https://github.com/kasam",
+                href: "https://github.com/kasambhusal",
                 icon: Github,
                 label: "GitHub",
               },
               {
-                href: "https://linkedin.com/in/kasambhusal",
+                href: "https://www.linkedin.com/in/kasam-bhusal/",
                 icon: Linkedin,
                 label: "LinkedIn",
               },

@@ -14,8 +14,8 @@ interface SEOProps {
 export function generateSEO({
   title = "Kasam Bhusal - Full Stack Developer & ML Enthusiast",
   description = "Portfolio of Kasam Bhusal - Full Stack Developer, Machine Learning Enthusiast, and People Connector. Showcasing projects, skills, and achievements.",
-  image = "/og-image.png",
-  url = "https://kasambhusal.com",
+  image = "/kasam-photo.png",
+  url = "https://kasambhusal.com.np",
   type = "website",
   publishedTime,
   modifiedTime,
@@ -28,6 +28,8 @@ export function generateSEO({
     description,
     keywords: [
       "Kasam Bhusal",
+      "Kasam",
+      "Bhusal",
       "Full Stack Developer",
       "Machine Learning",
       "ML Enthusiast",
@@ -48,7 +50,7 @@ export function generateSEO({
       address: false,
       telephone: false,
     },
-    metadataBase: new URL("https://kasambhusal.com"),
+    metadataBase: new URL("https://kasambhusal.com.np"),
     alternates: {
       canonical: url,
     },
@@ -95,7 +97,7 @@ export function generateSEO({
 }
 
 export function generateStructuredData(type: "person" | "website" | "article", data: any) {
-  const baseUrl = "https://kasambhusal.com"
+  const baseUrl = "https://kasambhusal.com.np"
 
   switch (type) {
     case "person":
@@ -108,7 +110,7 @@ export function generateStructuredData(type: "person" | "website" | "article", d
         url: baseUrl,
         email: "developerkasam@gmail.com",
         telephone: "+977 9860555866",
-        sameAs: ["https://github.com/kasam", "https://linkedin.com/in/kasambhusal"],
+        sameAs: ["https://github.com/kasambhusal", "https://www.linkedin.com/in/kasam-bhusal/"],
         knowsAbout: ["Web Development", "Machine Learning", "React", "Next.js", "Python", "JavaScript", "TypeScript"],
         alumniOf: data?.education || [],
         worksFor: data?.companies || [],

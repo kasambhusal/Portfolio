@@ -76,7 +76,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <CardHeader>
                 {blog.tags && blog.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.map((tag) => (
+                    {blog.tags.map((tag: string) => (
                       <Badge key={tag} variant="secondary">
                         {tag}
                       </Badge>
@@ -117,7 +117,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <div className="mt-8">
                 <h3 className="text-xl font-semibold mb-4">Gallery</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {blog.image_urls.slice(1).map((imageUrl, index) => (
+                  {blog.image_urls.slice(1).map((imageUrl: string, index: number) => (
                     <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
                       <img
                         src={imageUrl || "/placeholder.svg"}

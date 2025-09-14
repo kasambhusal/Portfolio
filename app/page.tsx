@@ -33,9 +33,7 @@ export default function HomePage() {
         </ErrorBoundary>
 
         <ErrorBoundary fallback={<div className="py-20" />}>
-          <Suspense fallback={<LoadingSpinner />}>
             <TestimonialsSection />
-          </Suspense>
         </ErrorBoundary>
 
         <Footer />

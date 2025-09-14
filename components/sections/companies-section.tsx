@@ -55,11 +55,9 @@ export function CompaniesSection() {
           <div className="relative overflow-hidden">
             <motion.div
               className="flex gap-10 items-center"
-              animate={{
-                x: ["0%", `-50%`], // move halfway (since we duplicate the array)
-              }}
+              animate={{ x: ["0%", "-100%"] }}
               transition={{
-                duration: 60, // slower for professional feel
+                duration: 20, // slower = more professional
                 repeat: Infinity,
                 ease: "linear",
               }}

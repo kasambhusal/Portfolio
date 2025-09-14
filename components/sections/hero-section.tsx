@@ -98,8 +98,14 @@ export function HeroSection() {
                   size="lg"
                   className="group bg-transparent"
                 >
-                  <Download className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-                  Download Resume
+                  <a
+                    href="https://drive.google.com/file/d/1CV5EshAT_HuJhHA0F2hp_eGgJEIS6jTP/view?usp=sharing"
+                    target="_blank"
+                    className="flex items-center"
+                  >
+                    <Download className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
+                    Download Resume
+                  </a>
                 </Button>
               </motion.div>
             </div>

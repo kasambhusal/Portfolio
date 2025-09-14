@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -28,7 +28,7 @@ export function Navbar() {
     { href: "/skills", label: "Skills" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
   return (
     <motion.nav
@@ -37,7 +37,7 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.25, 0.25, 0, 1] }}
       className={cn(
         "fixed top-4 left-4 right-4 z-50 transition-all duration-300",
-        isScrolled ? "glass dark:glass-dark shadow-lg" : "glass dark:glass-dark",
+        isScrolled ? "glass dark:glass-dark shadow-lg" : "glass dark:glass-dark"
       )}
       style={{
         borderRadius: "2rem",
@@ -84,7 +84,7 @@ export function Navbar() {
           {/* Theme Toggle & Mobile Menu */}
           <div className="flex items-center gap-2">
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
@@ -92,10 +92,10 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-full"
+                className="rounded-full cursor-pointer"
               >
-                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <Sun className="h-4 w-4 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
               </Button>
             </motion.div>
@@ -175,5 +175,5 @@ export function Navbar() {
         </AnimatePresence>
       </div>
     </motion.nav>
-  )
+  );
 }

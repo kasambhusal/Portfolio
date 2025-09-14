@@ -11,19 +11,19 @@ export function StatsSection() {
   const stats = [
     {
       icon: Users,
-      value: "50+",
+      value: "25+",
       label: "Happy Customers",
       color: "text-blue-500",
     },
     {
       icon: Code,
-      value: "100+",
+      value: "15+",
       label: "Projects Completed",
       color: "text-green-500",
     },
     {
       icon: Award,
-      value: "1M+",
+      value: "800K+",
       label: "Lines of Code",
       color: "text-purple-500",
     },

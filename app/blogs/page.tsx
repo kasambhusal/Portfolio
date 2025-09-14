@@ -97,9 +97,9 @@ export default function BlogsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
+            {blogs.map((blog, index) => (
               <Card
-                key={blog.id}
+                key={index}
                 className="group hover:scale-105 transition-all duration-300 glass dark:glass-dark overflow-hidden"
               >
                 {blog.image_urls?.[0] && (

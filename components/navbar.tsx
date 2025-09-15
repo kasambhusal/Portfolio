@@ -7,11 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+    const pathname = usePathname(); // ⬅️ current route
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,8 +75,12 @@ export function Navbar() {
                 >
                   {item.label}
                   <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"
-                    whileHover={{ width: "100%" }}
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300",
+                      pathname === item.href
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                    )}
                   />
                 </Link>
               </motion.div>

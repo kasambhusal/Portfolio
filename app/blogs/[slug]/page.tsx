@@ -1,33 +1,35 @@
-import { notFound } from "next/navigation"
-import { db } from "@/lib/db"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, ArrowLeft } from "lucide-react"
-import { Footer } from "@/components/footer"
-import Link from "next/link"
-import type { Metadata } from "next"
+import { notFound } from "next/navigation";
+import { db } from "@/lib/db";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar, ArrowLeft } from "lucide-react";
+import { Footer } from "@/components/footer";
+import Link from "next/link";
+import type { Metadata } from "next";
 
 interface BlogPageProps {
-  params: { slug: string }
+  params: { slug: string };
 }
 
 async function getBlog(slug: string) {
   try {
-    const blog = await db.getBlog(slug)
-    return blog
+    const blog = await db.getBlog(slug);
+    return blog;
   } catch (error) {
-    return null
+    return null;
   }
 }
 
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const blog = await getBlog(params.slug)
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const blog = await getBlog(params.slug);
 
   if (!blog) {
     return {
       title: "Blog Post Not Found",
-    }
+    };
   }
 
   return {
@@ -47,14 +49,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       description: blog.description,
       images: blog.image_urls || [],
     },
-  }
+  };
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const blog = await getBlog(params.slug)
+  const blog = await getBlog(params.slug);
 
   if (!blog) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -83,7 +85,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     ))}
                   </div>
                 )}
-                <CardTitle className="text-3xl md:text-4xl font-bold text-balance">{blog.title}</CardTitle>
+                <CardTitle className="text-3xl md:text-4xl font-bold text-balance">
+                  {blog.title}
+                </CardTitle>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar className="w-4 h-4" />
                   <span>{new Date(blog.created_at).toLocaleDateString()}</span>
@@ -106,8 +110,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <Card className="glass dark:glass-dark">
               <CardContent className="p-8">
                 <div className="prose prose-lg max-w-none dark:prose-invert">
-                  <p className="text-xl text-muted-foreground mb-8 text-pretty">{blog.description}</p>
-                  {blog.content && <div className="whitespace-pre-wrap text-pretty">{blog.content}</div>}
+                  <p className="text-xl text-muted-foreground mb-8 text-pretty">
+                    {blog.description}
+                  </p>
+                  {blog.content && (
+                    <div className="whitespace-pre-wrap text-pretty">
+                      {blog.content}
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -117,15 +127,20 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <div className="mt-8">
                 <h3 className="text-xl font-semibold mb-4">Gallery</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {blog.image_urls.slice(1).map((imageUrl: string, index: number) => (
-                    <div key={index} className="aspect-video bg-muted rounded-lg overflow-hidden">
-                      <img
-                        src={imageUrl || "/placeholder.svg"}
-                        alt={`${blog.title} - Image ${index + 2}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
+                  {blog.image_urls
+                    .slice(1)
+                    .map((imageUrl: string, index: number) => (
+                      <div
+                        key={index}
+                        className="bg-muted rounded-lg overflow-hidden flex items-center justify-center p-2"
+                      >
+                        <img
+                          src={imageUrl || "/placeholder.svg"}
+                          alt={`${blog.title} - Image ${index + 2}`}
+                          className="max-h-[500px] w-full object-contain rounded-lg"
+                        />
+                      </div>
+                    ))}
                 </div>
               </div>
             )}
@@ -142,5 +157,5 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       <Footer />
     </div>
-  )
+  );
 }

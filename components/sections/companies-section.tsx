@@ -57,7 +57,7 @@ export function CompaniesSection() {
               className="flex gap-10 items-center"
               animate={{ x: ["0%", "-100%"] }}
               transition={{
-                duration: 20, // slower = more professional
+                duration: 20,
                 repeat: Infinity,
                 ease: "linear",
               }}
@@ -70,7 +70,7 @@ export function CompaniesSection() {
                   rel="noopener noreferrer"
                   className="flex-shrink-0"
                 >
-                  <Card className="p-6 glass dark:glass-dark transition-all duration-300 hover:shadow-lg">
+                  <Card className="p-4 glass dark:glass-dark transition-all duration-300 hover:shadow-lg">
                     <div className="flex items-center justify-center h-16 w-32">
                       <motion.img
                         src={company.image_url || "/placeholder.svg"}

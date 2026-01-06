@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 export function generateSEO({
-  title = "Kasam Bhusal - Full Stack Developer & ML Enthusiast",
-  description = "Portfolio of Kasam Bhusal - Full Stack Developer, Machine Learning Enthusiast, and People Connector. Showcasing projects, skills, and achievements.",
+  title = "Kasam Bhusal | Curious Technologist & AI Learner",
+  description = "Kasam Bhusal is a curious technologist and AI learner exploring software and human-centered technology. Personal portfolio, projects, and journey.",
   image = "/kasam-photo.png",
   url = "https://kasambhusal.com.np",
   type = "website",
@@ -29,12 +29,17 @@ export function generateSEO({
     keywords: [
       "Kasam Bhusal",
       "Kasam",
-      "Bhusal",
+      "Kasam AI",
+      "Kasam Developer",
+      "Kasam Portfolio",
+      "Kasam Learner",
+      "Kasam Bhusal Nepal",
+      "Curious Technologist",
+      "AI Learner",
+      "Human Centered Technology",
+      "Nepal Developer",
       "Full Stack Developer",
       "Machine Learning",
-      "ML Enthusiast",
-      "Portfolio",
-      "Web Development",
       "React",
       "Next.js",
       "Python",
@@ -50,9 +55,13 @@ export function generateSEO({
       address: false,
       telephone: false,
     },
-    metadataBase: new URL("https://kasambhusal.com.np"),
+    metadataBase: new URL(url),
     alternates: {
       canonical: url,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
     },
     openGraph: {
       type,
@@ -76,7 +85,7 @@ export function generateSEO({
       card: "summary_large_image",
       title,
       description,
-      creator: "@kasambhusal",
+      creator: "@KasamB86962",
       images: [image],
     },
     robots: {
@@ -96,7 +105,10 @@ export function generateSEO({
   }
 }
 
-export function generateStructuredData(type: "person" | "website" | "article", data: any) {
+export function generateStructuredData(
+  type: "person" | "website" | "article",
+  data: any = {}
+) {
   const baseUrl = "https://kasambhusal.com.np"
 
   switch (type) {
@@ -105,13 +117,26 @@ export function generateStructuredData(type: "person" | "website" | "article", d
         "@context": "https://schema.org",
         "@type": "Person",
         name: "Kasam Bhusal",
-        jobTitle: "Full Stack Developer",
-        description: "Full Stack Developer, Machine Learning Enthusiast, and People Connector",
+        jobTitle: "Full Stack Developer & AI Learner",
+        description:
+          "Kasam Bhusal is a curious technologist and AI learner exploring software and human-centered technology.",
         url: baseUrl,
         email: "developerkasam@gmail.com",
-        telephone: "+977 9860555866",
-        sameAs: ["https://github.com/kasambhusal", "https://www.linkedin.com/in/kasam-bhusal/"],
-        knowsAbout: ["Web Development", "Machine Learning", "React", "Next.js", "Python", "JavaScript", "TypeScript"],
+        telephone: "+9779860555866",
+        sameAs: [
+          "https://github.com/kasambhusal",
+          "https://www.linkedin.com/in/kasam-bhusal/",
+        ],
+        knowsAbout: [
+          "Web Development",
+          "Machine Learning",
+          "AI",
+          "React",
+          "Next.js",
+          "Python",
+          "JavaScript",
+          "TypeScript",
+        ],
         alumniOf: data?.education || [],
         worksFor: data?.companies || [],
       }
@@ -122,7 +147,7 @@ export function generateStructuredData(type: "person" | "website" | "article", d
         "@type": "WebSite",
         name: "Kasam Bhusal Portfolio",
         description:
-          "Portfolio of Kasam Bhusal - Full Stack Developer, Machine Learning Enthusiast, and People Connector",
+          "Kasam Bhusal Portfolio - Full Stack Developer, AI Learner, and Human-Centered Technologist.",
         url: baseUrl,
         author: {
           "@type": "Person",

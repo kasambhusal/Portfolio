@@ -5,8 +5,8 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { Footer } from "@/components/footer";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { generateStructuredData } from "@/lib/seo";
-import { Suspense } from "react";
-import { LoadingSpinner } from "@/components/loading-spinner";
+// Import the new component
+import { WarmWelcome } from "@/components/sections/warm-welcome"; 
 
 export default function HomePage() {
   const personStructuredData = generateStructuredData("person", {});
@@ -33,10 +33,13 @@ export default function HomePage() {
         </ErrorBoundary>
 
         <ErrorBoundary fallback={<div className="py-20" />}>
-            <TestimonialsSection />
+          <TestimonialsSection />
         </ErrorBoundary>
 
         <Footer />
+        
+        {/* The Welcome Message */}
+        <WarmWelcome />
       </div>
     </>
   );

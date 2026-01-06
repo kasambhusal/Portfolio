@@ -68,8 +68,8 @@ export function TestimonialsSection() {
             What People Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Don&apos;t just take my word for it. Here&apos;s what clients and
-            collaborators have to say about working with me.
+            The best part of my work is the people I do it with.<br />
+            Here is some feedback from my collaborators and teammates.
           </p>
         </FadeIn>
 

@@ -21,17 +21,11 @@ async function getBlog(slug: string) {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
-  const blog = await getBlog(params.slug);
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+      const { slug } = await params;
+  const blog = await getBlog(slug);
 
-  if (!blog) {
-    return {
-      title: "Blog Post Not Found",
-    };
-  }
-
+  if (!blog) return { title: "Blog Post Not Found" };
   return {
     title: `${blog.title} - Kasam Bhusal`,
     description: blog.description,
@@ -53,7 +47,9 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const blog = await getBlog(params.slug);
+    const { slug } = await params;
+
+  const blog = await getBlog(slug);
 
   if (!blog) {
     notFound();

@@ -147,18 +147,14 @@ export function HeroSection() {
                 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Link
-                  href={social.href}
-                  className="p-3 rounded-full glass dark:glass-dark transition-all duration-300"
-                  target={social.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    social.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                >
-                  <social.icon className="h-5 w-5" />
-                  <span className="sr-only">{social.label}</span>
+               <Link
+                href={social.href}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center justify-center"
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
+                <social.icon className="h-6 w-6" />
+                <span className="sr-only">{social.label}</span>
                 </Link>
               </motion.div>
             ))}

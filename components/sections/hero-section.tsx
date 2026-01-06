@@ -62,14 +62,15 @@ export function HeroSection() {
             </FadeIn>
             <FadeIn delay={0.4}>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground mb-6 text-balance">
-                Full Stack Developer & ML Enthusiast
+                Learning to build technology that serves people
               </h2>
             </FadeIn>
             <FadeIn delay={0.6}>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Passionate about building innovative solutions that bridge
-                technology and human connection. Specializing in modern web
-                development and machine learning applications.
+                I&apos;m a learner at heart, interested in how technology can be
+                thoughtfully applied across different fields to solve real problems.
+                I enjoy building with purpose, learning from communities, and creating
+                tools that genuinely help people.
               </p>
             </FadeIn>
           </div>

@@ -37,7 +37,7 @@ export default function SkillsPage() {
         ])
 
         if (skillsResponse.ok) {
-          const skillsData = await skillsResponse.json()
+          const skillsData = (await skillsResponse.json()).reverse();
           setSkills(skillsData)
         }
 
@@ -156,7 +156,7 @@ export default function SkillsPage() {
       {/* Awards Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Awards & Achievements</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Awards & Honors</h2>
 
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

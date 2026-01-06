@@ -59,9 +59,7 @@ export default function ProjectsPage() {
               My Projects
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty">
-              A showcase of my work spanning web development, machine learning,
-              and innovative solutions. Each project represents a unique
-              challenge and learning experience.
+              A few selected projects spanning software development, machine learning, and creative solutions, reflecting my hands-on learning and real-world impact.
             </p>
           </div>
         </div>

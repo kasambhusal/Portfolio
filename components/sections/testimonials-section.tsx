@@ -141,7 +141,7 @@ export function TestimonialsSection() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="cursor-pointer">
                   Read More Projects
                 </Button>
               </motion.div>

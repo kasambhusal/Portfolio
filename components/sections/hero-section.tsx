@@ -99,7 +99,7 @@ export function HeroSection() {
                   className="group bg-transparent"
                 >
                   <a
-                    href="https://drive.google.com/file/d/1CV5EshAT_HuJhHA0F2hp_eGgJEIS6jTP/view?usp=sharing"
+                    href="https://drive.google.com/file/d/16L8X2Hr8sekMDqw7YnRrlFjJ-SLkEG_0/view?usp=sharing"
                     target="_blank"
                     className="flex items-center"
                   >

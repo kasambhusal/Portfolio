@@ -11,19 +11,19 @@ export function StatsSection() {
   const stats = [
     {
       icon: Users,
-      value: "25+",
-      label: "Happy Customers",
+      value: "185K+",
+      label: "Lives Impacted",
       color: "text-blue-500",
     },
     {
       icon: Code,
-      value: "15+",
+      value: "20+",
       label: "Projects Completed",
       color: "text-green-500",
     },
     {
       icon: Award,
-      value: "800K+",
+      value: "850K+",
       label: "Lines of Code",
       color: "text-purple-500",
     },
@@ -41,7 +41,7 @@ export function StatsSection() {
         <FadeIn className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Impact by Numbers</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here's a glimpse of the impact I've made through my work and collaborations.
+            Building digital experiences that connect and scale.
           </p>
         </FadeIn>
 
@@ -62,7 +62,6 @@ export function StatsSection() {
                       <motion.div
                         className={`inline-flex p-3 rounded-full bg-muted mb-4 ${stat.color}`}
                         whileHover={{
-                          rotate: 360,
                           transition: { duration: 0.6, ease: "easeInOut" },
                         }}
                       >

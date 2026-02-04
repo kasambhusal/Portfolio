@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/animations/fade-in";
+import { motion, easeInOut } from "framer-motion";
 
 interface Company {
   id: number;
@@ -19,7 +17,7 @@ export function CompaniesSection() {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch("/api/public/companies");
+        const response = await fetch("/data/companies.json");
         if (response.ok) {
           const data = await response.json();
           setCompanies(data);
@@ -38,57 +36,100 @@ export function CompaniesSection() {
     return null;
   }
 
-  return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <FadeIn className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trusted by Amazing Organizations
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I&apos;ve had the privilege to work with and contribute to these
-            incredible companies and organizations.
-          </p>
-        </FadeIn>
+  // Animation variants for the container and children
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // This creates the "ripple" loading effect
+        delayChildren: 0.3,
+      },
+    },
+  };
 
-        <FadeIn delay={0.3}>
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-10 items-center"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {[...companies, ...companies].map((company, index) => (
-                <a
-                  key={`${company.id}-${index}`}
-                  href={company.website_link || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0"
-                >
-                  <Card className="p-4 glass dark:glass-dark transition-all duration-300 hover:shadow-lg">
-                    <div className="flex items-center justify-center h-16 w-32">
-                      <motion.img
-                        src={company.image_url || "/placeholder.svg"}
-                        alt={company.name}
-                        className="max-h-full max-w-full object-contain filter grayscale transition-all duration-300"
-                        whileHover={{
-                          scale: 1.05,
-                          filter: "grayscale(0%)",
-                          transition: { duration: 0.3 },
-                        }}
-                      />
-                    </div>
-                  </Card>
-                </a>
-              ))}
-            </motion.div>
-          </div>
-        </FadeIn>
+  const item = {
+    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { duration: 0.5, ease: easeInOut }
+    },
+  };
+
+  return (
+    <section className="py-24 relative overflow-hidden">
+      {/* Background Decor: Subtle radial gradient to give depth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header - Kept the text you liked */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+          >
+            Trusted by Amazing Organizations
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-muted-foreground"
+          >
+            I&apos;ve had the privilege to work with and contribute to these incredible Companies and Organizations.
+          </motion.p>
+        </div>
+
+        {/* The Precision Grid */}
+        <motion.div 
+          variants={container}
+          // initial="hidden"
+          whileInView="show"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
+          {companies.map((company, index) => (
+  <motion.a
+    key={company.id}
+    variants={item}
+    href={company.website_link || "#"}
+    target="_blank"
+    rel="noopener noreferrer"
+    // Made the container taller (h-40) and kept the group class for hover effects
+    className="group relative flex flex-col items-center justify-center h-48 w-full p-6 rounded-2xl bg-muted/20 border border-white/5 hover:bg-muted/30 transition-all duration-500 overflow-hidden"
+  >
+    {/* Hover Glow Effect (Subtle background shift) */}
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+    {/* Content Wrapper to manage layout */}
+    <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+      
+      {/* 1. Logo Section */}
+      {/* Shifts up (-translate-y-3) and shrinks slightly on hover */}
+      <div className="transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:scale-90">
+        <img
+          src={company.image_url || "/placeholder.svg"}
+          alt={company.name}
+          className="h-12 w-auto object-contain opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+        />
+      </div>
+
+      {/* 2. Text Name Section */}
+      {/* Starts hidden (opacity-0) and lower down (translate-y-4).
+          On hover, it becomes visible and slides up to its natural position. */}
+      <span className="absolute bottom-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out text-sm font-semibold tracking-wide text-foreground">
+        {company.name}
+      </span>
+      
+    </div>
+  </motion.a>
+))}
+        </motion.div>
       </div>
     </section>
   );

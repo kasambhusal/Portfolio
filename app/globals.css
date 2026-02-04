@@ -144,3 +144,10 @@
     background-clip: text;
   }
 }
+
+/* In globals.css */
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+}

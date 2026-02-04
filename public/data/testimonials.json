@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Anjal Sapkota",
+    "designation": "Senior Backend Developer",
+    "company": "Addon Engineering Solution",
+    "image_url": "/testimonial/user-02.png",
+    "description": "Hi I am Anjal, a senior Java developer. Kasam as a frontend developer worked with me for about 3 months and his ability to learn new programming languages or new frameworks within a very short amount of time really amazed me. I hope we will definitely collaborate again in the future.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Shree Krishna",
+    "designation": "Chairman",
+    "company": "Addon Engineering Solution",
+    "image_url": "/testimonial/user-03.jpg",
+    "description": "Kasam interned at Addon Engineering Solution for three months, showcasing exceptional curiosity, dedication, and hard work. His sincerity and adaptability made him a valuable team member, and I'm confident in his potential for future success.",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Bhuwan Poudel",
+    "designation": "SEO Specialist",
+    "company": "Tachyonwave Technologies",
+    "image_url": "/testimonial/user-01.jpg",
+    "description": "We worked on some incredible projects together, and what stands out most about him is his ability to analyze problems deeply and tackle them at their root.",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Rajan Bhandari",
+    "designation": "Manager",
+    "company": "Tachyonwave Technologies",
+    "image_url": "/testimonial/user-04.jpg",
+    "description": "We collaborated on some remarkable projects, and what truly sets him apart is his exceptional ability to handle code with precision, effortlessly detect errors, and tackle complex challenges with ease.",
+    "rating": 5
+  }
+]

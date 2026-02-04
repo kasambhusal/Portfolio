@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "name": "Tachyonwave Technologies Pvt. Ltd.",
+    "image_url": "/tachyonwave-logo.webp",
+    "website_link": "https://tachyonwave.com/"
+  },
+  {
+    "id": 2,
+    "name": "Addon Engineering Solution Pvt. Ltd.",
+    "image_url": "/addon-logo.webp",
+    "website_link": "https://www.addon.com.np/"
+  },
+  {
+    "id": 3,
+    "name": "Institute For Rural Development",
+    "image_url": "/ird-logo.webp",
+    "website_link": "https://ird.com.np/"
+  },
+  {
+    "id": 4,
+    "name": "Uunchai Nepal",
+    "image_url": "/uunchai-logo.webp",
+    "website_link": "https://www.uunchai.org/"
+  },
+  {
+    "id": 5,
+    "name": "Navigo Nepal",
+    "image_url": "/navigo-logo.webp",
+    "website_link": "https://navigonepal.org/"
+  },
+   {
+    "id": 7,
+    "name": "Lokpati Media",
+    "image_url": "/lokpati-logo.webp",
+    "website_link": "https://lokpati.com/"
+  },
+  {
+    "id": 6,
+    "name": "KrishiSanjal",
+    "image_url": "/krishisanjal-logo.webp",
+    "website_link": "https://krishisanjal.com/"
+  },
+ 
+  {
+    "id": 8,
+    "name": "Citizen College",
+    "image_url": "/citizen-logo.webp",
+    "website_link": "https://citizencollege.edu.np"
+  },
+  {
+    "id": 9,
+    "name": "Youth Activism Nepal",
+    "image_url": "/yan-logo.webp",
+    "website_link": "https://youthactivismnepal.org.np/"
+  },
+  {
+    "id": 10,
+    "name": "JHSW",
+    "image_url": "/jhsw-logo.webp",
+    "website_link": "https://jhswn.com/index.php/jhsw"
+  },
+  {
+    "id": 11,
+    "name": "8K Tech Pvt. Ltd.",
+    "image_url": "/8k-logo.webp",
+    "website_link": "https://8ktech.co.uk/"
+  }
+  ,
+  {
+    "id": 12,
+    "name": "Cardiff PT Studio",
+    "image_url": "/cardiffptstudio-logo.webp",
+    "website_link": "https://cardiffptstudio.com/"
+  }
+]

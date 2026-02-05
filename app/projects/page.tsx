@@ -11,7 +11,7 @@ export const metadata = generateSEO({
 // Function to fetch data on the server
 async function getProjects() {
   try {
-    // NOTE: In Server Components, you usually need the full URL (e.g., http://localhost:3000/api...)
+    // NOTE: In Server Components, you usually need the full URL (e.g., /api...)
     // OR better yet, import your database logic directly here (e.g., prisma.project.findMany())
     // to avoid an API call to yourself. 
     
@@ -19,7 +19,7 @@ async function getProjects() {
     // const projects = await db.query(...) 
     
     // If you must use fetch, ensure the URL is absolute:
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/public/projects`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/public/projects`, {
       cache: 'no-store' // Ensures fresh data on every request
     });
     

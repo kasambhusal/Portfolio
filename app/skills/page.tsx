@@ -9,7 +9,7 @@ export const metadata = generateSEO({
 });
 
 async function getSkillsAndAwards() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
   
   try {
     const [skillsRes, awardsRes] = await Promise.all([

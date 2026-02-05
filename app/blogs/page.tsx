@@ -16,7 +16,7 @@ async function getInitialBlogs() {
     // });
     
     // Simulating the fetch for now so it compiles for you
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/public/blogs?page=1&limit=9`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/public/blogs?page=1&limit=9`, {
         cache: 'no-store'
     });
 

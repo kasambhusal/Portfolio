@@ -5,7 +5,7 @@ import { generateSEO } from "@/lib/seo";
 export const metadata = generateSEO({
   title: "About | Kasam Bhusal",
   description:
-    "Learn about my journey as a curious technologist and AI enthusiast, committed to learning, growing, and serving others.",
+    "From a public school in Nepal to building global tech: My journey, values, and vision for community-driven innovation.",
 });
 
 

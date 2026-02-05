@@ -5,7 +5,6 @@ import { Github, Linkedin, Mail, Phone, ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
 
   return (
     <footer className="relative bg-background pt-24 pb-12 overflow-hidden border-t border-white/5">
@@ -99,7 +98,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {currentYear} Kasam Bhusal. Crafted with precision.</p>
+          <p>© 2026 Kasam Bhusal.</p>
           <div className="flex gap-8">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

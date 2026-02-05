@@ -11,6 +11,7 @@ import { Suspense } from "react"
 import { generateSEO, generateStructuredData } from "@/lib/seo"
 import "./globals.css"
 import Script from "next/script"
+import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = generateSEO({
   title: "Kasam Bhusal | Curious Technologist & AI Learner",
@@ -82,6 +83,7 @@ export default function RootLayout({
               <Navbar />
               <main className="pt-20">{children}</main>
               <Toaster />
+              <Footer/>
             </Suspense>
           </AuthProvider>
         </ThemeProvider>

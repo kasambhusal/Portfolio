@@ -1,24 +1,19 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react"
-import { Footer } from "@/components/footer"
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, Sparkles } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [loading, setLoading] = useState(false)
   const { toast } = useToast()
 
@@ -29,25 +24,23 @@ export default function ContactPage() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
 
       if (response.ok) {
         toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
+          title: "Message Sent! 🚀",
+          description: "Got it! I'll dive into your message and get back to you soon.",
         })
         setFormData({ name: "", email: "", message: "" })
       } else {
-        throw new Error("Failed to send message")
+        throw new Error("Failed")
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again or contact me directly.",
+        title: "Something went wrong",
+        description: "Couldn't send the message. Maybe try a direct email?",
         variant: "destructive",
       })
     } finally {
@@ -55,116 +48,102 @@ export default function ContactPage() {
     }
   }
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "developerkasam@gmail.com",
-      href: "mailto:developerkasam@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+977 9860555866",
-      href: "tel:+9779860555866",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Nepal",
-      href: null,
-    },
-  ]
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/kasambhusal",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/kasam-bhusal/",
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      href: "mailto:developerkasam@gmail.com",
-    },
-  ]
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1, duration: 0.5 } }
+  }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Get In Touch</h1>
-            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
-              Have a project in mind? Want to collaborate? Or just want to say hello? I'd love to hear from you. Let's
-              start a conversation.
+    <div className="min-h-screen bg-background">
+      {/* Modern Hero with Glow */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
+        <div className="container mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono mb-6 border border-primary/20">
+              <Sparkles className="w-3 h-3" />
+              AVAILABLE FOR NEW OPPORTUNITIES
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+              Let's build <span className="text-primary italic">together.</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Have a question or a brilliant idea? I’m all ears. 
+              Drop a message below and let’s start something amazing.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20">
+      <section className="pb-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <Card className="glass dark:glass-dark">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12"
+          >
+            {/* Contact Form Card */}
+            <motion.div variants={containerVariants}>
+              <Card className="border-primary/10 bg-card/50 backdrop-blur-xl shadow-2xl">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Send Me a Message</CardTitle>
+                  <CardTitle className="text-2xl font-bold">Send a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Name *</Label>
+                      <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
                       <Input
                         id="name"
+                        className="bg-background/50 border-primary/10 focus:border-primary/50 transition-all h-12"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
-                        placeholder="Your full name"
+                        placeholder="John Doe"
                         disabled={loading}
                       />
                     </div>
-
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
                       <Input
                         id="email"
                         type="email"
+                        className="bg-background/50 border-primary/10 focus:border-primary/50 transition-all h-12"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        placeholder="your.email@example.com"
+                        placeholder="john@example.com"
                         disabled={loading}
                       />
                     </div>
-
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
+                      <Label htmlFor="message" className="text-sm font-medium">How can I help?</Label>
                       <Textarea
                         id="message"
+                        className="bg-background/50 border-primary/10 focus:border-primary/50 transition-all resize-none"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         required
-                        rows={6}
-                        placeholder="Tell me about your project or just say hello..."
+                        rows={5}
+                        placeholder="Tell me about your project..."
                         disabled={loading}
                       />
                     </div>
-
-                    <Button type="submit" size="lg" className="w-full" disabled={loading}>
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full h-12 rounded-xl text-lg font-bold shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]" 
+                      disabled={loading}
+                    >
                       {loading ? (
-                        "Sending..."
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          Sending...
+                        </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4 mr-2" />
+                          <Send className="w-5 h-5 mr-2" />
                           Send Message
                         </>
                       )}
@@ -172,84 +151,64 @@ export default function ContactPage() {
                   </form>
                 </CardContent>
               </Card>
+            </motion.div>
 
-              {/* Contact Info */}
-              <div className="space-y-8">
-                <Card className="glass dark:glass-dark">
-                  <CardHeader>
-                    <CardTitle className="text-2xl">Contact Information</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {contactInfo.map((info, index) => {
-                      const Icon = info.icon
-                      const content = (
-                        <div className="flex items-center gap-4">
-                          <div className="p-3 bg-accent/10 rounded-lg">
-                            <Icon className="w-5 h-5 text-accent" />
-                          </div>
-                          <div>
-                            <div className="font-medium">{info.label}</div>
-                            <div className="text-muted-foreground">{info.value}</div>
-                          </div>
-                        </div>
-                      )
+            {/* Sidebar Info */}
+            <div className="flex flex-col gap-6">
+              <motion.div variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                {[
+                  { icon: Mail, label: "Email", val: "developerkasam@gmail.com", href: "mailto:developerkasam@gmail.com" },
+                  { icon: Phone, label: "Phone", val: "+977 9860555866", href: "tel:+9779860555866" },
+                  { icon: MapPin, label: "Based in", val: "Nepal / Remote", href: null },
+                ].map((item, i) => (
+                  <Card key={i} className="border-none bg-primary/30 backdrop-blur-sm group transition-colors">
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="p-3 bg-primary/10 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+                        <item.icon className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono text-muted-foreground uppercase">{item.label}</p>
+                        {item.href ? (
+                          <a href={item.href} className="font-bold hover:text-primary transition-colors">{item.val}</a>
+                        ) : (
+                          <p className="font-bold">{item.val}</p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </motion.div>
 
-                      return info.href ? (
-                        <a
-                          key={index}
-                          href={info.href}
-                          className="block hover:scale-105 transition-transform duration-300"
-                        >
-                          {content}
-                        </a>
-                      ) : (
-                        <div key={index}>{content}</div>
-                      )
-                    })}
-                  </CardContent>
-                </Card>
-
-                <Card className="glass dark:glass-dark">
-                  <CardHeader>
-                    <CardTitle className="text-2xl">Follow Me</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+              <motion.div variants={containerVariants}>
+                <Card className="border-none bg-primary/5 overflow-hidden relative">
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Github className="w-24 h-24" />
+                  </div>
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-bold mb-4">Let's Connect</h3>
                     <div className="flex gap-4">
-                      {socialLinks.map((social, index) => {
-                        const Icon = social.icon
-                        return (
-                          <Link
-                            key={index}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 rounded-full glass dark:glass-dark hover:scale-110 transition-all duration-300"
-                          >
-                            <Icon className="w-5 h-5" />
-                            <span className="sr-only">{social.label}</span>
-                          </Link>
-                        )
-                      })}
+                      {[
+                        { icon: Github, href: "https://github.com/kasambhusal" },
+                        { icon: Linkedin, href: "https://www.linkedin.com/in/kasam-bhusal/" },
+                        { icon: Mail, href: "mailto:developerkasam@gmail.com" },
+                      ].map((social, i) => (
+                        <Link 
+                          key={i} 
+                          href={social.href} 
+                          target="_blank"
+                          className="w-12 h-12 flex items-center justify-center rounded-xl bg-background border border-primary/10 hover:border-primary hover:text-primary transition-all shadow-sm"
+                        >
+                          <social.icon className="w-5 h-5" />
+                        </Link>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
-
-                <Card className="glass dark:glass-dark">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-3">Quick Response</h3>
-                    <p className="text-muted-foreground text-sm text-pretty">
-                      I typically respond to messages within 24 hours. For urgent matters, feel free to reach out
-                      directly via phone or email.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }

@@ -1,16 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
-import { Footer } from "@/components/footer";
+import { ExternalLink, Calendar, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 interface Project {
@@ -22,135 +14,142 @@ interface Project {
   created_at: string;
 }
 
+// Animation variants for staggered entrance
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: "spring" as const, stiffness: 50 } 
+  },
+};
 
-export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("/api/public/projects");
-        if (response.ok) {
-          const data = await response.json();
-          const sortedData = data.sort(
-            (a: Project, b: Project) =>
-              new Date(b.created_at).getTime() -
-              new Date(a.created_at).getTime()
-          );
-          setProjects(sortedData);
-        }
-      } catch (error) {
-        console.error("Failed to fetch projects:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+export default function ProjectsPage({ initialProjects }: { initialProjects: Project[] }) {
+  const projects = initialProjects || [];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              My Projects
+    <div className="min-h-screen bg-background relative overflow-hidden selection:bg-primary/20">
+      
+      {/* Dynamic Background Elements - Adds depth without being distracting */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
+      </div>
+
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 container mx-auto px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl flex flex-col items-center text-center mx-auto"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Works</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
+            <p className="text-xl text-muted-foreground text-pretty max-w-2xl leading-relaxed">
               A few selected projects spanning software development, machine learning, and creative solutions, reflecting my hands-on learning and real-world impact.
             </p>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </section>
 
-      {/* Projects Grid.. */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Card key={i} className="animate-pulse">
-                  <div className="aspect-video bg-muted rounded-t-lg" />
-                  <CardHeader>
-                    <div className="h-6 bg-muted rounded w-3/4" />
-                    <div className="h-4 bg-muted rounded w-full" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-4 bg-muted rounded w-full mb-2" />
-                    <div className="h-4 bg-muted rounded w-2/3" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : projects.length === 0 ? (
-            <div className="text-center py-20">
+        {/* Projects Grid */}
+        <section className="pb-32 container mx-auto px-6">
+          {projects.length === 0 ? (
+            <div className="text-center py-20 border border-dashed rounded-xl bg-muted/20">
               <h3 className="text-2xl font-semibold mb-4">No Projects Yet</h3>
-              <p className="text-muted-foreground mb-8">
-                Projects are being added regularly. Check back soon!
-              </p>
+              <p className="text-muted-foreground mb-8">Projects are being added regularly.</p>
               <Link href="/">
-                <Button>Back to Home</Button>
+                <Button variant="outline">Back to Home</Button>
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
               {projects.map((project) => (
-                <Card
+                <motion.div
                   key={project.id}
-                  className="group hover:scale-105 transition-all duration-300 glass dark:glass-dark overflow-hidden"
+                  variants={itemVariants}
+                  className="group relative flex flex-col h-full"
                 >
-                  {project.image_url && (
-                    <div className="aspect-video bg-muted overflow-hidden">
-                      <img
-                        src={
-                          project.image_url ||
-                          "/placeholder.svg?height=300&width=400"
-                        }
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
+                  {/* Card Container */}
+                  <div className="relative h-full bg-muted/30 backdrop-blur-sm border border-white/10 dark:border-white/5 rounded-3xl overflow-hidden hover:border-primary/50 transition-colors duration-500">
+                    
+                    {/* Image Area */}
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      {project.image_url ? (
+                        <img
+                          src={project.image_url}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                          <span className="text-muted-foreground font-mono text-sm">No Preview</span>
+                        </div>
+                      )}
+                      
+                      {/* Overlay Gradient for text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
                     </div>
-                  )}
-                  <CardHeader>
-                    <CardTitle className="text-xl group-hover:text-accent transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground">
-                      {new Date(project.created_at).toLocaleDateString()}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-6 text-pretty">
-                      {project.description}
-                    </p>
-                    {project.project_link && (
-                      <div className="flex gap-2">
-                        <Button size="sm" asChild>
+
+                    {/* Content Area */}
+                    <div className="p-6 flex flex-col flex-grow relative">
+                      
+                      {/* Date badge */}
+                      <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-3">
+                        <Calendar className="w-3 h-3" />
+                        {new Date(project.created_at).toLocaleDateString(undefined, {
+                          year: 'numeric',
+                          month: 'long'
+                        })}
+                      </div>
+
+                      <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors flex items-center gap-2">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                        {project.description}
+                      </p>
+
+                      {project.project_link && (
+                        <div className="pt-4 mt-auto border-t border-white/5">
                           <a
                             href={project.project_link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2"
+                            className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors group/link"
                           >
-                            <ExternalLink className="w-4 h-4" />
                             View Project
+                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
                           </a>
-                        </Button>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <Footer />
     </div>
   );
 }

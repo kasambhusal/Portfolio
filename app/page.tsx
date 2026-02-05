@@ -2,8 +2,6 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { CompaniesSection } from "@/components/sections/companies-section";
 import { StatsSection } from "@/components/sections/stats-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { Footer } from "@/components/footer";
-import { ErrorBoundary } from "@/components/error-boundary";
 import { generateStructuredData } from "@/lib/seo";
 // Import the new component
 import { WarmWelcome } from "@/components/sections/warm-welcome"; 
@@ -20,23 +18,11 @@ export default function HomePage() {
         }}
       />
       <div className="min-h-screen">
-        <ErrorBoundary>
           <HeroSection />
-        </ErrorBoundary>
-
-        <ErrorBoundary fallback={<div className="py-20" />}>
           <CompaniesSection />
-        </ErrorBoundary>
-
-        <ErrorBoundary>
           <StatsSection />
-        </ErrorBoundary>
-
-        <ErrorBoundary fallback={<div className="py-20" />}>
           <TestimonialsSection />
-        </ErrorBoundary>
 
-        <Footer />
         
         {/* The Welcome Message */}
         <WarmWelcome />

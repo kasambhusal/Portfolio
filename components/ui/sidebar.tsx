@@ -264,6 +264,7 @@ function SidebarTrigger({
     <Button
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
+      aria-label="Toggle Sidebar"
       variant="ghost"
       size="icon"
       className={cn("size-7", className)}

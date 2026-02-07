@@ -68,6 +68,7 @@ export function Navbar() {
               <div className="w-[1px] h-6 bg-border mx-1" />
               <Button 
                 className="rounded-full w-10 h-10 bg-primary hover:scale-105 transition-transform" 
+                aria-label="Open menu"
                 size="icon" 
                 onClick={() => setIsMenuOpen(true)}
               >
@@ -105,6 +106,7 @@ export function Navbar() {
                   <Button 
                     variant="ghost" 
                     size="icon" 
+                    aria-label="Close menu"
                     className="rounded-full hover:bg-destructive/10 hover:text-destructive transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -148,6 +150,7 @@ function ThemeToggle() {
   return (
     <motion.button
       whileTap={{ scale: 0.9 }}
+      aria-label="Toggle theme"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="relative w-10 h-10 flex items-center justify-center rounded-full bg-secondary/50 border border-border overflow-hidden group shadow-sm cursor-pointer"
     >
@@ -195,7 +198,7 @@ function MobileNav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border px-6 py-4 flex justify-between items-center">
       <Logo />
-      <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+      <Button variant="ghost" size="icon" aria-label="Toggle mobile menu" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <X /> : <Menu />}
       </Button>
       <AnimatePresence>

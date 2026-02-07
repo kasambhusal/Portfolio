@@ -98,6 +98,7 @@ export function CompaniesSection() {
     key={company.id}
     variants={item}
     href={company.website_link || "#"}
+    aria-label={`Visit ${company.name}'s website`}
     target="_blank"
     rel="noopener noreferrer"
     // Made the container taller (h-40) and kept the group class for hover effects

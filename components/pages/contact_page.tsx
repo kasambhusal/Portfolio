@@ -133,6 +133,7 @@ export default function ContactPage() {
                     <Button 
                       type="submit" 
                       size="lg" 
+                      aria-label="Send message"
                       className="w-full h-12 rounded-xl text-lg font-bold shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]" 
                       disabled={loading}
                     >
@@ -169,7 +170,7 @@ export default function ContactPage() {
                       <div>
                         <p className="text-xs font-mono text-muted-foreground uppercase">{item.label}</p>
                         {item.href ? (
-                          <a href={item.href} className="font-bold hover:text-primary transition-colors">{item.val}</a>
+                          <a href={item.href} aria-label={`Read more about ${item.label}`} className="font-bold hover:text-primary transition-colors">{item.val}</a>
                         ) : (
                           <p className="font-bold">{item.val}</p>
                         )}

@@ -76,8 +76,8 @@ export default function AboutClientView() {
                 with empathy and a goal to make life slightly easier for someone, somewhere.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact"><Button size="lg" className="rounded-full px-8">Let's Talk</Button></Link>
-                <Link href="/projects"><Button size="lg" variant="ghost" className="rounded-full px-8">View Projects</Button></Link>
+                <Link href="/contact"><Button size="lg" aria-label="Contact me" className="rounded-full px-8">Let's Talk</Button></Link>
+                <Link href="/projects"><Button size="lg" variant="ghost" aria-label="View projects" className="rounded-full px-8">View Projects</Button></Link>
               </div>
             </motion.div>
 

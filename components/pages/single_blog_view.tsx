@@ -150,6 +150,7 @@ export default function SingleBlogView({ blog }: BlogViewProps) {
               <Button 
                 variant="outline" 
                 size="lg" 
+                aria-label="Share this blog post"
                 className="rounded-full gap-2"
                 onClick={() => {
                    if (navigator.share) {

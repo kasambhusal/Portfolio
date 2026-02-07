@@ -122,7 +122,7 @@ export function TestimonialsSection() {
         {/* Action Button */}
         <FadeIn delay={0.4} className="mt-20 text-center">
           <Link href="/projects">
-            <Button size="lg" className="rounded-full px-8 hover:scale-105 transition-transform">
+            <Button size="lg" className="rounded-full px-8 hover:scale-105 transition-transform" aria-label="View my projects">
               View My Works
             </Button>
           </Link>

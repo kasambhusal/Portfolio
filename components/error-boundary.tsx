@@ -48,7 +48,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <p className="text-muted-foreground">
                 We encountered an unexpected error. Please try refreshing the page.
               </p>
-              <Button onClick={() => window.location.reload()} className="w-full">
+              <Button onClick={() => window.location.reload()} className="w-full" aria-label="Refresh page">
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Refresh Page
               </Button>

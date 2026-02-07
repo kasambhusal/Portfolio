@@ -71,7 +71,7 @@ export default function ProjectsPage({ initialProjects }: { initialProjects: Pro
               <h3 className="text-2xl font-semibold mb-4">No Projects Yet</h3>
               <p className="text-muted-foreground mb-8">Projects are being added regularly.</p>
               <Link href="/">
-                <Button variant="outline">Back to Home</Button>
+                <Button variant="outline" aria-label="Return to home page">Back to Home</Button>
               </Link>
             </div>
           ) : (

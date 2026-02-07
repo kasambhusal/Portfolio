@@ -197,14 +197,14 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/projects">
-              <Button size="lg" className="rounded-full px-8">
+              <Button size="lg" className="rounded-full px-8" aria-label="View my projects">
                 View My Work <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
 
             <Link href="https://drive.google.com/file/d/16L8X2Hr8sekMDqw7YnRrlFjJ-SLkEG_0/view" passHref>
 
-              <Button variant="outline" size="lg" className="rounded-full px-8">
+              <Button variant="outline" size="lg" className="rounded-full px-8" aria-label="Download my resume">
                 <Download className="mr-2 h-4 w-4" /> Resume
               </Button>
             </Link>
@@ -216,12 +216,14 @@ export function HeroSection() {
                 whileHover={{ scale: 1.2 }}
                 className="text-muted-foreground hover:text-primary"
                 href="mailto:developerkasam@gmail.com"
+                aria-label="Send me an email"
               >
                 <Mail className="h-6 w-6" />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.2 }}
                 target="_blank"
+                aria-label="Visit my GitHub profile"
                 className="text-muted-foreground hover:text-primary"
                 href="https://github.com/kasambhusal"
               >
@@ -230,6 +232,7 @@ export function HeroSection() {
               <motion.a
                 whileHover={{ scale: 1.2 }}
                 target="_blank"
+                aria-label="Visit my LinkedIn profile"
                 className="text-muted-foreground hover:text-primary"
                 href="https://www.linkedin.com/in/kasam-bhusal/"
               >

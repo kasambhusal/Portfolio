@@ -102,6 +102,7 @@ export function Footer() {
           <div className="flex gap-8">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              aria-label="Back to top"
               className="hover:text-foreground transition-colors flex items-center gap-2"
             >
               Back to top ↑

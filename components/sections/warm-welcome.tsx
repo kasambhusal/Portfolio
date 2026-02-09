@@ -16,7 +16,7 @@ export function WarmWelcome() {
       // 2. Delay appearance by 4 seconds (let them see the Hero section first)
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 4000);
+      }, 10000);
 
       return () => clearTimeout(timer);
     }

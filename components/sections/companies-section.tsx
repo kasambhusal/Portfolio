@@ -73,7 +73,7 @@ export function CompaniesSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
           >
-            Trusted by Amazing Organizations
+            Trusted by Amazing Institutions
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
@@ -94,41 +94,39 @@ export function CompaniesSection() {
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           {companies.map((company, index) => (
-  <motion.a
-    key={company.id}
-    variants={item}
-    href={company.website_link || "#"}
-    aria-label={`Visit ${company.name}'s website`}
-    target="_blank"
-    rel="noopener noreferrer"
-    // Made the container taller (h-40) and kept the group class for hover effects
-    className="group relative flex flex-col items-center justify-center h-48 w-full p-6 rounded-2xl bg-muted/20 border border-white/5 hover:bg-muted/30 transition-all duration-500 overflow-hidden"
-  >
-    {/* Hover Glow Effect (Subtle background shift) */}
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+          <motion.a
+            key={company.id}
+            variants={item}
+            href={company.website_link || "#"}
+            aria-label={`Visit ${company.name}'s website`}
+            target="_blank"
+            rel="noopener noreferrer"
+            // Made the container taller (h-40) and kept the group class for hover effects
+            className="group relative flex flex-col items-center justify-center h-48 w-full p-6 rounded-2xl transition-all duration-500 overflow-hidden"
+          >
 
-    {/* Content Wrapper to manage layout */}
-    <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-      
-      {/* 1. Logo Section */}
-      {/* Shifts up (-translate-y-3) and shrinks slightly on hover */}
-      <div className="transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:scale-90">
-        <img
-          src={company.image_url || "/placeholder.svg"}
-          alt={company.name}
-          className="h-12 w-auto object-contain opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
-        />
-      </div>
+            {/* Content Wrapper to manage layout */}
+            <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+              
+              {/* 1. Logo Section */}
+              {/* Shifts up (-translate-y-3) and shrinks slightly on hover */}
+              <div className="transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:scale-90">
+                <img
+                  src={company.image_url || "/placeholder.svg"}
+                  alt={company.name}
+                  className="h-12 w-auto object-contain opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
 
-      {/* 2. Text Name Section */}
-      {/* Starts hidden (opacity-0) and lower down (translate-y-4).
-          On hover, it becomes visible and slides up to its natural position. */}
-      <span className="absolute bottom-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out text-sm font-semibold tracking-wide text-foreground">
-        {company.name}
-      </span>
-      
-    </div>
-  </motion.a>
+              {/* 2. Text Name Section */}
+              {/* Starts hidden (opacity-0) and lower down (translate-y-4).
+                  On hover, it becomes visible and slides up to its natural position. */}
+              <span className="absolute bottom-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out text-sm font-semibold tracking-wide text-foreground">
+                {company.name}
+              </span>
+              
+            </div>
+          </motion.a>
 ))}
         </motion.div>
       </div>

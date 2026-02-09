@@ -8,18 +8,12 @@ export function Footer() {
 
   return (
     <footer className="relative bg-background pt-24 pb-12 overflow-hidden border-t border-white/5">
-      {/* Ambient Background Glow */}
+      {/* Ambient Background Glow */}y
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent"
-          >
-            LET&apos;S CONNECT
-          </motion.h2>
+          
           
           <motion.div
             initial={{ opacity: 0 }}
@@ -27,14 +21,16 @@ export function Footer() {
             transition={{ delay: 0.2 }}
           >
             <Link 
-              href="mailto:developerkasam@gmail.com"
-              className="group relative inline-flex items-center gap-2 text-xl md:text-2xl font-medium hover:text-primary transition-colors duration-300"
+              href="https://calendly.com/mrkasam/30min"
+              target="_blank"
+              className="group relative inline-flex items-center gap-2 text-3xl hover:text-primary transition-colors duration-300 text-3xl md:text-6xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent"
             >
-              developerkasam@gmail.com
+              Schedule a Meet
               <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               <div className="absolute -bottom-2 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-500" />
             </Link>
           </motion.div>
+          <p className="text-muted-foreground">I&apos;d be more than happy to talk to you</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-white/5 pt-12">
@@ -88,6 +84,14 @@ export function Footer() {
               <p className="hover:text-foreground transition-colors cursor-pointer flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary" /> +977 9860555866
               </p>
+               <Link 
+              href="mailto:developerkasam@gmail.com"
+              className="hover:text-foreground transition-colors cursor-pointer flex items-center gap-3"
+            >
+              <Mail className="h-4 w-4 text-primary"/>
+              developerkasam@gmail.com
+
+            </Link>
               <p className="flex items-start gap-3">
                 <span className="h-4 w-4 mt-1 rounded-full bg-green-500 animate-pulse" />
                 Available for new opportunities

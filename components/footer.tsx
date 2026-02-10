@@ -8,7 +8,7 @@ export function Footer() {
 
   return (
     <footer className="relative bg-background pt-24 pb-12 overflow-hidden border-t border-white/5">
-      {/* Ambient Background Glow */}y
+      {/* Ambient Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="container mx-auto px-4">

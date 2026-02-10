@@ -96,7 +96,7 @@ export default function AboutClientView() {
               {/* The Image Container */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden z-10">
                 <Image 
-                  src="/kasam-photo.png" 
+                  src="/kasam-photo.webp" 
                   alt="Kasam" 
                   fill // Use fill for circular containers
                   className="object-cover transition-transform duration-700 hover:scale-110"

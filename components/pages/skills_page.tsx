@@ -9,6 +9,8 @@ interface Skill {
   name: string;
   category?: string;
   proficiency_level: number;
+  created_at: string;
+  updated_at: string;
 }
 
 interface AwardType {
@@ -17,6 +19,8 @@ interface AwardType {
   description?: string;
   date_received?: string;
   organization?: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export default function SkillsPage({ 
@@ -103,7 +107,9 @@ export default function SkillsPage({
                     <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
+                        // Change this part:
                         whileInView={{ width: `${skill.proficiency_level * 10}%` }}
+                        viewport={{ once: true }} // Add this line here
                         transition={{ duration: 1, delay: 0.5 }}
                         className="h-full bg-primary rounded-full"
                       />

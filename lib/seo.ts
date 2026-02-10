@@ -29,6 +29,8 @@ export function generateSEO({
     keywords: [
       "Kasam Bhusal",
       "Kasam",
+      "Kasam B",
+      "Bhusal",
       "Kasam AI",
       "Kasam Developer",
       "Kasam Portfolio",

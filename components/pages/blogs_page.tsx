@@ -2,8 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface Blog {
@@ -89,10 +88,6 @@ export default function BlogsPage({ initialBlogs, initialTotalPages }: BlogsPage
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Badge variant="outline" className="mb-4 py-1 px-4 rounded-full border-primary/20 text-primary bg-primary/5 backdrop-blur-sm">
-              <Sparkles className="w-3 h-3 mr-2" />
-              The Journal
-            </Badge>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
               Writing & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Stories</span>
             </h1>

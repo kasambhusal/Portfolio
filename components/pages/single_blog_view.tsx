@@ -103,7 +103,10 @@ export default function SingleBlogView({ blog }: BlogViewProps) {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="container mx-auto max-w-6xl px-4 mb-16"
           >
-            <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 relative">
+            <div 
+              className="rounded-lg overflow-hidden shadow-xl ring-1 relative"
+              style={{ '--tw-ring-color': 'var(--ring)' } as React.CSSProperties}
+            >
               <img
                 src={blog.image_urls[0]}
                 alt={blog.title}

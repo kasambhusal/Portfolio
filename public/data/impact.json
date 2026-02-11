@@ -1,0 +1,34 @@
+[
+    {
+      "icon": "Users",
+      "value": "195K+",
+      "label": "Lives Impacted",
+      "color": "text-blue-500",
+      "bg": "group-hover:bg-blue-500/10",
+      "glow": "group-hover:shadow-blue-500/20"
+    },
+    {
+      "icon": "Code",
+      "value": "34+",
+      "label": "Projects Completed",
+      "color": "text-green-500",
+      "bg": "group-hover:bg-green-500/10",
+      "glow": "group-hover:shadow-green-500/20"
+    },
+    {
+      "icon": "Award",
+      "value": "887K+",
+      "label": "Lines of Code",
+      "color": "text-purple-500",
+      "bg": "group-hover:bg-purple-500/10",
+      "glow": "group-hover:shadow-purple-500/20"
+    },
+    {
+      "icon": "MessageSquare",
+      "value": "98%",
+      "label": "Positive Feedback",
+      "color": "text-orange-500",
+      "bg": "group-hover:bg-orange-500/10",
+      "glow": "group-hover:shadow-orange-500/20"
+    }
+  ]

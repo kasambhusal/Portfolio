@@ -60,10 +60,7 @@ export default function ContactPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono mb-6 border border-primary/20">
-              <Sparkles className="w-3 h-3" />
-              AVAILABLE FOR NEW OPPORTUNITIES
-            </div>
+           
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
               Let's build <span className="text-primary italic">together.</span>
             </h1>

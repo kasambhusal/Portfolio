@@ -59,7 +59,6 @@ export default function ContactPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
         <div className="container mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
            
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
               Let's build <span className="text-primary italic">together.</span>
@@ -68,7 +67,6 @@ export default function ContactPage() {
               Have a question or a brilliant idea? I’m all ears. 
               Drop a message below and let’s start something amazing.
             </p>
-          </motion.div>
         </div>
       </section>
 
@@ -154,27 +152,27 @@ export default function ContactPage() {
             {/* Sidebar Info */}
             <div className="flex flex-col gap-6">
               <motion.div variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                <Card className="border-none backdrop-blur-sm group transition-colors">
                 {[
                   { icon: Mail, label: "Email", val: "developerkasam@gmail.com", href: "mailto:developerkasam@gmail.com" },
                   { icon: Phone, label: "Phone", val: "+977 9860555866", href: "tel:+9779860555866" },
                   { icon: MapPin, label: "Based in", val: "Nepal / Remote", href: null },
                 ].map((item, i) => (
-                  <Card key={i} className="border-none bg-primary/30 backdrop-blur-sm group transition-colors">
-                    <CardContent className="p-6 flex items-center gap-4">
-                      <div className="p-3 bg-primary/10 rounded-2xl text-primary group-hover:scale-110 transition-transform">
+                    <CardContent className="flex items-center gap-4">
+                      <div className="p-3 bg-primary/10 rounded-2xl text-primary">
                         <item.icon className="w-6 h-6" />
                       </div>
                       <div>
                         <p className="text-xs font-mono text-muted-foreground uppercase">{item.label}</p>
                         {item.href ? (
-                          <a href={item.href} aria-label={`Read more about ${item.label}`} className="font-bold hover:text-primary transition-colors">{item.val}</a>
+                          <a href={item.href} aria-label={`Read more about ${item.label}`} className="font-bold ">{item.val}</a>
                         ) : (
                           <p className="font-bold">{item.val}</p>
                         )}
                       </div>
                     </CardContent>
-                  </Card>
                 ))}
+                </Card>
               </motion.div>
 
               <motion.div variants={containerVariants}>

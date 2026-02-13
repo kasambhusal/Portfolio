@@ -21,7 +21,6 @@ export function FadeIn({ children, delay = 0, direction = "up", className }: Fad
   return (
     <motion.div
       initial={{
-        opacity: 0,
         ...directions[direction],
       }}
       whileInView={{

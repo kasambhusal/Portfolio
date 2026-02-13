@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// 1. Removed AvatarImage, kept Avatar and AvatarFallback
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"; 
+import Image from "next/image"; // 2. Imported Next.js Image
 import { Star, Quote } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -67,7 +69,8 @@ export function TestimonialsSection() {
         </FadeIn>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12" staggerDelay={0.1}>
-          {testimonials.map((testimonial) => (
+          {/* 3. Added 'index' to the map function to manage priority loading */}
+          {testimonials.map((testimonial, index) => (
             <StaggerItem key={testimonial.id}>
               <motion.div
                 whileHover={{ y: -5 }}
@@ -84,7 +87,7 @@ export function TestimonialsSection() {
 
                   {/* Description with a slight "indent" effect */}
                   <blockquote className="text-lg md:text-xl leading-relaxed text-foreground/90 font-medium italic">
-                    "{testimonial.description}"
+                    &quot;{testimonial.description}&quot;
                   </blockquote>
 
                   {/* Divider Line that grows on hover */}
@@ -95,18 +98,35 @@ export function TestimonialsSection() {
                     <div className="relative">
                        {/* Animated border around avatar */}
                       <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <Avatar className="h-14 w-14 border-2 border-background relative">
-                        <AvatarImage src={testimonial.image_url} alt={testimonial.name} className="object-cover" />
+                      
+                      {/* 4. Swapped AvatarImage for Next Image with Fill */}
+                      <Avatar className="h-14 w-14 border-2 border-background relative overflow-hidden">
+                        
+                        {/* Fallback stays at the bottom layer */}
                         <AvatarFallback className="bg-primary/10 text-primary">
                           {testimonial.name.split(" ").map(n => n[0]).join("")}
                         </AvatarFallback>
+
+                        {/* Next Image layers on top when available */}
+                        {testimonial.image_url && (
+                          <Image
+                            src={testimonial.image_url}
+                            alt={`${testimonial.name}'s profile picture`}
+                            fill
+                            sizes="56px"
+                            priority={index < 4} // Optimistic loading for top 4 cards
+                            className="object-cover z-10"
+                          />
+                        )}
+                        
                       </Avatar>
+
                     </div>
                     
                     <div>
-                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
+                      <p className="font-bold text-lg group-hover:text-primary transition-colors">
                         {testimonial.name}
-                      </h4>
+                      </p>
                       <p className="text-sm text-muted-foreground">
                         <span className="text-primary/80">{testimonial.designation}</span>
                         {testimonial.company && ` • ${testimonial.company}`}

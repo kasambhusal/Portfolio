@@ -49,6 +49,7 @@ export function Footer() {
                 <Link
                   key={i}
                   href={social.href}
+                  aria-label={`Visit my ${social.href.includes("github") ? "GitHub" : social.href.includes("linkedin") ? "LinkedIn" : "email"} profile`}
                   target="_blank"
                   className="p-3 rounded-xl bg-muted/20 border border-white/5 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 >

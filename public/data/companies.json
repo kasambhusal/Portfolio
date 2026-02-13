@@ -3,54 +3,63 @@
     "id": 1,
     "name": "Prime Minister's Office Nepal",
     "image_url": "/institutions/pmo-logo.webp",
+    "alt_text": "PMO Logo",
     "website_link": "https://opmcm.gov.np/"
   },
   {
     "id": 2,
     "name": "Ministry of Foreign Affairs Nepal",
     "image_url": "/institutions/mofa-logo.webp",
+    "alt_text": "Foreign Affairs Logo",
     "website_link": "https://mofa.gov.np/"
   },
   {
     "id": 3,
     "name": "Tachyonwave Technologies Pvt. Ltd.",
     "image_url": "/institutions/tachyonwave-logo.webp",
+    "alt_text": "Tachyonwave Logo",
     "website_link": "https://tachyonwave.com/"
   },
   {
     "id": 4,
     "name": "Addon Engineering Solution Pvt. Ltd.",
     "image_url": "/institutions/addon-logo.webp",
+    "alt_text": "Addon Logo",
     "website_link": "https://www.addon.com.np/"
   },
   {
     "id": 5,
     "name": "Institute For Rural Development",
     "image_url": "/institutions/ird-logo.webp",
+    "alt_text": "IRD Logo",
     "website_link": "https://ird.com.np/"
   },
   {
     "id": 6,
     "name": "Uunchai Nepal",
     "image_url": "/institutions/uunchai-logo.webp",
+    "alt_text": "Uunchai Logo",
     "website_link": "https://www.uunchai.org/"
   },
   {
     "id": 7,
     "name": "Navigo Nepal",
     "image_url": "/institutions/navigo-logo.webp",
+    "alt_text": "Navigo Logo",
     "website_link": "https://navigonepal.org/"
   },
    {
     "id": 8,
     "name": "Lokpati Media",
     "image_url": "/institutions/lokpati-logo.webp",
+    "alt_text": "Lokpati Logo",
     "website_link": "https://lokpati.com/"
   },
   {
     "id": 9,
     "name": "KrishiSanjal",
     "image_url": "/institutions/krishisanjal-logo.webp",
+    "alt_text": "KrishiSanjal Logo",
     "website_link": "https://krishisanjal.com/"
   },
  
@@ -58,24 +67,28 @@
     "id": 10,
     "name": "Citizen College",
     "image_url": "/institutions/citizen-logo.webp",
+    "alt_text": "Citizen Logo",
     "website_link": "https://citizencollege.edu.np"
   },
   {
     "id": 11,
     "name": "Youth Activism Nepal",
     "image_url": "/institutions/yan-logo.webp",
+    "alt_text": "YAN Logo",
     "website_link": "https://youthactivismnepal.org.np/"
   },
   {
     "id": 12,
     "name": "JHSW",
     "image_url": "/institutions/jhsw-logo.webp",
+    "alt_text": "JHSW Logo",
     "website_link": "https://jhswn.com/index.php/jhsw"
   },
   {
     "id": 13,
     "name": "8K Tech Pvt. Ltd.",
     "image_url": "/institutions/8k-logo.webp",
+    "alt_text": "8K Tech Logo",
     "website_link": "https://8ktech.co.uk/"
   }
   ,
@@ -83,24 +96,28 @@
     "id": 14,
     "name": "Cardiff PT Studio",
     "image_url": "/institutions/cardiffptstudio-logo.webp",
+    "alt_text": "Cardiff Logo",
     "website_link": "https://cardiffptstudio.com/"
   },
   {
     "id": 15,
     "name": "Inclusive Society",
     "image_url": "/institutions/inclusive-logo.webp",
+    "alt_text": "Inclusive Society Logo",
     "website_link": "https://www.onginclusivesociety.com/"
   },
   {
     "id": 16,
     "name": "EduSphere",
     "image_url": "/institutions/edusphere-logo.webp",
+    "alt_text": "EduSphere Logo",
     "website_link": "https://www.edusphere.pro/"
   },
   {
     "id": 17,
     "name": "Leo Club Of Kathmandu Matribhumi",
     "image_url": "/institutions/leo_matribhumi-logo.webp",
+    "alt_text": "Leo Club Logo",
     "website_link": "https://www.instagram.com/leo_matribhumi/"
   }
 ]

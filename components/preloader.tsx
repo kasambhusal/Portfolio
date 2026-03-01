@@ -1,25 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Terminal } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const loadingTexts = [
-  "Loading…",
-  "Compiling ideas",
-  "Almost there…",
-  "Just a moment more…",
+  "Setting things up...",
+  "Getting everything ready...",
+  "Optimizing your experience...",
+  "Finalizing the details...",
+  "Connecting to the server..."
 ];
 
 export default function Preloader() {
   const [textIndex, setTextIndex] = useState(0);
+  const [showReloadMsg, setShowReloadMsg] = useState(false);
 
   useEffect(() => {
+    // Cycle through texts every 2 seconds
     const interval = setInterval(() => {
       setTextIndex((prev) => (prev + 1) % loadingTexts.length);
     }, 2000);
 
-    return () => clearInterval(interval);
+    // Show the reload message after 10 seconds
+    const timeout = setTimeout(() => {
+      setShowReloadMsg(true);
+    }, 10000); 
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
@@ -30,62 +41,55 @@ export default function Preloader() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex flex-col items-center"
       >
-        {/* Icon + Rings */}
-        <div className="relative mb-10">
-          {/* Outer ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-10 rounded-full border border-primary/10"
+        {/* Huge Logo */}
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="relative mb-8 flex items-center justify-center"
+        >
+          {/* Increased width and height significantly, removed the circle wrapper */}
+          <Image 
+            src="/badge2.webp" 
+            alt="Kasam Bhusal Logo" 
+            width={250} 
+            height={250} 
+            className="object-contain drop-shadow-2xl"
+            priority
           />
-
-          {/* Inner ring */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-6 rounded-full border border-primary/20"
-          />
-
-          {/* Core */}
-          <motion.div
-            animate={{
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-white/10 shadow-2xl"
-          >
-            <Terminal className="h-10 w-10 text-primary" />
-          </motion.div>
-        </div>
+        </motion.div>
 
         {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg tracking-[0.3em] text-foreground"
+          className="text-xl tracking-[0.3em] text-foreground font-semibold"
         >
           KASAM BHUSAL
         </motion.h1>
 
         {/* Dynamic loading text */}
-        <motion.p
-          key={textIndex}
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mt-2 text-xs uppercase tracking-widest text-muted-foreground"
-        >
-          {loadingTexts[textIndex]}
-        </motion.p>
+        <div className="mt-3 h-6 overflow-hidden flex justify-center">
+          <motion.p
+            key={textIndex}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-xs uppercase tracking-widest text-muted-foreground"
+          >
+            {loadingTexts[textIndex]}
+          </motion.p>
+        </div>
 
         {/* Progress bar */}
-        <div className="mt-6 h-1 w-36 overflow-hidden rounded-full bg-secondary">
+        <div className="mt-6 h-1 w-48 overflow-hidden rounded-full bg-secondary">
           <motion.div
             className="h-full bg-primary"
             animate={{ x: ["-100%", "100%"] }}
@@ -96,6 +100,27 @@ export default function Preloader() {
             }}
           />
         </div>
+
+        {/* Conditional Reload Message */}
+        {showReloadMsg && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-8 px-4 text-center max-w-xs"
+          >
+            <p className="text-sm text-muted-foreground">
+              This is taking a bit longer than expected. 
+              <br />
+              <button 
+                onClick={() => window.location.reload()} 
+                className="mt-2 text-primary hover:underline font-medium focus:outline-none"
+              >
+                A quick refresh usually does the trick!
+              </button>
+            </p>
+          </motion.div>
+        )}
       </motion.div>
     </div>
   );

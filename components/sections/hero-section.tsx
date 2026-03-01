@@ -202,7 +202,7 @@ export function HeroSection() {
               </Button>
             </Link>
 
-            <Link href="https://drive.google.com/file/d/16L8X2Hr8sekMDqw7YnRrlFjJ-SLkEG_0/view" passHref>
+            <Link href="https://drive.google.com/file/d/1JBhHA5e-SUnCsh6mW3B-L9HgRv_mS3aQ/view?usp=sharing" passHref>
 
               <Button variant="outline" size="lg" className="rounded-full px-8" aria-label="Download my resume">
                 <Download className="mr-2 h-4 w-4" /> Resume

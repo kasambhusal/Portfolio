@@ -155,7 +155,7 @@ export default function ContactPage() {
                 <Card className="border-none backdrop-blur-sm group transition-colors">
                 {[
                   { icon: Mail, label: "Email", val: "developerkasam@gmail.com", href: "mailto:developerkasam@gmail.com" },
-                  { icon: Phone, label: "Phone", val: "+977 9860555866", href: "tel:+9779860555866" },
+                  { icon: Phone, label: "Phone", val: "+977 9743492229", href: "tel:+9779743492229" },
                   { icon: MapPin, label: "Based in", val: "Nepal / Remote", href: null },
                 ].map((item, i) => (
                     <CardContent className="flex items-center gap-4">

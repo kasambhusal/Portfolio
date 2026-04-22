@@ -12,46 +12,32 @@ interface SEOProps {
 }
 
 export function generateSEO({
-  title = "Kasam Bhusal | Curious Technologist & AI Learner",
-  description = "Kasam Bhusal is a curious technologist and AI learner exploring software and human-centered technology. Personal portfolio, projects, and journey.",
-  image = "/kasam-photo.png",
+  title = "Mr. Kasam | Curious Technologist & AI Learner",
+  description = "Mr. Kasam is a curious technologist and AI learner exploring software and human-centered technology. Personal portfolio, projects, and journey.",
+  image = "/kasam-picture.png",
   url = "https://kasambhusal.com.np",
   type = "website",
   publishedTime,
   modifiedTime,
   tags,
 }: SEOProps = {}): Metadata {
-  const siteName = "Kasam Bhusal Portfolio"
+  const siteName = "Mr. Kasam Portfolio"
 
   return {
     title,
     description,
     keywords: [
+      "Mr. Kasam",
       "Kasam Bhusal",
       "Kasam",
-      "Kasam B",
       "Bhusal",
-      "Kasam AI",
-      "Kasam Developer",
-      "Kasam Portfolio",
-      "Kasam Learner",
-      "Kasam Bhusal Nepal",
-      "Curious Technologist",
-      "AI Learner",
-      "Human Centered Technology",
       "Nepal Developer",
       "Full Stack Developer",
-      "Machine Learning",
-      "React",
-      "Next.js",
-      "Python",
-      "JavaScript",
-      "TypeScript",
       ...(tags || []),
     ].join(", "),
     authors: [{ name: "Kasam Bhusal", url: "mailto:developerkasam@gmail.com" }],
-    creator: "Kasam Bhusal",
-    publisher: "Kasam Bhusal",
+    creator: "Mr. Kasam",
+    publisher: "Mr. Kasam",
     formatDetection: {
       email: false,
       address: false,
@@ -76,7 +62,7 @@ export function generateSEO({
         {
           url: image,
           width: 1200,
-          height: 630,
+          height: 1200,
           alt: title,
         },
       ],
@@ -118,26 +104,26 @@ export function generateStructuredData(
       return {
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Kasam Bhusal",
+        name: "Mr. Kasam",
         jobTitle: "Full Stack Developer & AI Learner",
         description:
-          "Kasam Bhusal is a curious technologist and AI learner exploring software and human-centered technology.",
+          "Mr. Kasam is a curious technologist and AI learner exploring software and human-centered technology.",
         url: baseUrl,
         email: "developerkasam@gmail.com",
-        telephone: "+9779860555866",
+        telephone: "+9779743492229",
         sameAs: [
           "https://github.com/kasambhusal",
           "https://www.linkedin.com/in/kasam-bhusal/",
         ],
         knowsAbout: [
-          "Web Development",
+          "Software Development",
           "Machine Learning",
           "AI",
-          "React",
-          "Next.js",
-          "Python",
-          "JavaScript",
-          "TypeScript",
+          "MERN",
+          "Social Media Marketing",
+          "AI Automation",
+          "SEO",
+          "Business Growth",
         ],
         alumniOf: data?.education || [],
         worksFor: data?.companies || [],
@@ -147,13 +133,13 @@ export function generateStructuredData(
       return {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "Kasam Bhusal Portfolio",
+        name: "Mr. Kasam Portfolio",
         description:
-          "Kasam Bhusal Portfolio - Full Stack Developer, AI Learner, and Human-Centered Technologist.",
+          "Mr. Kasam Portfolio - Full Stack Developer, AI Learner, and Human-Centered Technologist.",
         url: baseUrl,
         author: {
           "@type": "Person",
-          name: "Kasam Bhusal",
+          name: "Mr. Kasam",
         },
         potentialAction: {
           "@type": "SearchAction",
@@ -171,12 +157,12 @@ export function generateStructuredData(
         image: data.image,
         author: {
           "@type": "Person",
-          name: "Kasam Bhusal",
+          name: "Mr. Kasam",
           url: baseUrl,
         },
         publisher: {
           "@type": "Person",
-          name: "Kasam Bhusal",
+          name: "Mr. Kasam",
         },
         datePublished: data.publishedTime,
         dateModified: data.modifiedTime || data.publishedTime,

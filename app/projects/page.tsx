@@ -3,7 +3,7 @@ import ProjectsPage from "@/components/pages/projects_page"; // This is now just
 
 // Keep your metadata exactly as is
 export const metadata = generateSEO({
-  title: "Projects | Kasam Bhusal",
+  title: "Projects | Mr. Kasam",
   description:
     "Selected software and AI projects designed to make a meaningful impact in real-world communities.",
 });

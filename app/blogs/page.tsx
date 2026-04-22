@@ -2,7 +2,7 @@ import { generateSEO } from "@/lib/seo";
 import BlogsPage from "@/components/pages/blogs_page";
 
 export const metadata = generateSEO({
-  title: "Blogs | Kasam Bhusal",
+  title: "Blogs | Mr. Kasam",
   description:
     "Thoughts and insights on technology, AI, and human-centered solutions, written to inspire and share knowledge.",
 });

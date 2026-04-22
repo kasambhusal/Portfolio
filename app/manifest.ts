@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Kasam Bhusal - Portfolio",
-    short_name: "Kasam Bhusal",
-    description: "Portfolio of Kasam Bhusal - Full Stack Developer, Machine Learning Enthusiast, and People Connector",
+    name: "Mr. Kasam - Portfolio",
+    short_name: "Mr. Kasam",
+    description: "Portfolio of Mr. Kasam - Full Stack Developer, Machine Learning Enthusiast, and People Connector",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

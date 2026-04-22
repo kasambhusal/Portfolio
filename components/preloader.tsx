@@ -56,7 +56,7 @@ export default function Preloader() {
           {/* Increased width and height significantly, removed the circle wrapper */}
           <Image 
             src="/badge2.webp" 
-            alt="Kasam Bhusal Logo" 
+            alt="Mr. Kasam Logo" 
             width={250} 
             height={250} 
             className="object-contain drop-shadow-2xl"
@@ -71,7 +71,7 @@ export default function Preloader() {
           transition={{ delay: 0.2 }}
           className="text-xl tracking-[0.3em] text-foreground font-semibold"
         >
-          KASAM BHUSAL
+          Mr. Kasam
         </motion.h1>
 
         {/* Dynamic loading text */}

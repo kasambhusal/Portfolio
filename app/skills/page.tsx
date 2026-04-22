@@ -4,7 +4,7 @@ import SkillsPage from "@/components/pages/skills_page";
 import { db } from "@/lib/db"; // Import the db object directly
 
 export const metadata = generateSEO({
-  title: "Skills | Kasam Bhusal",
+  title: "Skills | Mr. Kasam",
   description:
   "A curated overview of my technical and analytical skills, focused on web development, AI, and problem-solving for communities.",
 });

@@ -35,7 +35,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-white/5 pt-12">
           {/* Brand & Bio */}
           <div className="md:col-span-5 space-y-6">
-            <h3 className="text-2xl font-bold tracking-tight">Kasam Bhusal</h3>
+            <h3 className="text-2xl font-bold tracking-tight">Mr. Kasam</h3>
             <p className="text-muted-foreground text-base max-w-sm leading-relaxed">
               Full Stack Developer and ML Enthusiast building digital products with 
               precision and purpose. Based in Nepal, working worldwide.
@@ -82,7 +82,7 @@ export function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-foreground/50">Get in Touch</h4>
             <div className="space-y-4 text-muted-foreground">
               <p className="hover:text-foreground transition-colors cursor-pointer flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" /> +977 9860555866
+                <Phone className="h-4 w-4 text-primary" /> +977 9743492229
               </p>
                <Link 
               href="mailto:developerkasam@gmail.com"
@@ -102,7 +102,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2026 Kasam Bhusal.</p>
+          <p>© 2026 Mr. Kasam.</p>
           <div className="flex gap-8">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

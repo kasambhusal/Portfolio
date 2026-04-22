@@ -14,9 +14,9 @@ import Script from "next/script"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = generateSEO({
-  title: "Kasam Bhusal | Curious Technologist & AI Learner",
+  title: "Mr. Kasam | Curious Technologist & AI Learner",
   description:
-    "Kasam Bhusal is a curious technologist and learner exploring AI, software, and human-centered technology. Personal portfolio, projects, and journey.",
+    "Mr. Kasam is a curious technologist and learner exploring AI, software, and human-centered technology. Personal portfolio, projects, and journey.",
 })
 
 export default function RootLayout({

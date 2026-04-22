@@ -167,7 +167,7 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
             Hi, I&apos;m{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
-              Kasam Bhusal
+              Mr. Kasam
             </span>
           </h1>
 
@@ -177,6 +177,7 @@ export function HeroSection() {
               <span className="text-foreground font-semibold">
                 <Typewriter
                 words={[
+                  "Global Freelancer",
                   "Patient Learner",
                   "Problem Solver",
                   "Grounded Thinker",
@@ -191,14 +192,14 @@ export function HeroSection() {
           </div>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-            I enjoy building with purpose, learning from peers, and creating
-            tools that genuinely help communities.
+          Helping businesses worldwide grow, scale, and innovate through technology.
+
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/projects">
               <Button size="lg" className="rounded-full px-8" aria-label="View my projects">
-                View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                View My Works <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
 

@@ -81,7 +81,7 @@ export function WarmWelcome() {
                   </a>
                   <span className="text-xs text-muted-foreground/50">•</span>
                   <a
-                    href="tel:+9779860555866"
+                    href="tel:+9779743492229"
                     className="group flex items-center rounded-full px-3 py-1 text-xs font-medium text-secondary transition-colors "
                   >
                     <Phone className="mr-1.5 h-3.5 w-3.5 transition-transform group-hover:scale-110" />

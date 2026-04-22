@@ -34,14 +34,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   if (!blog) return { title: "Blog Post Not Found" };
 
   return {
-    title: `${blog.title} | Kasam Bhusal`,
+    title: `${blog.title} | Mr. Kasam`,
     description: blog.description,
     openGraph: {
       title: blog.title,
       description: blog.description,
       type: "article",
       publishedTime: blog.created_at,
-      authors: ["Kasam Bhusal"],
+      authors: ["Mr. Kasam"],
       images: blog.image_urls ? blog.image_urls.map((url: any) => ({ url })) : [],
       url: `https://kasambhusal.com.np/blogs/${slug}`, // Add explicit URL
     },

@@ -24,7 +24,7 @@ export function Footer() {
               target="_blank"
               className="group relative inline-flex items-center gap-2 text-3xl hover:text-primary transition-colors duration-300 text-3xl md:text-6xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent"
             >
-              Schedule a Meet
+              Book an appoinment
               <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               <div className="absolute -bottom-2 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-500" />
             </Link>

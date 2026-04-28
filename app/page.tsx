@@ -1,6 +1,6 @@
-import { HeroSection } from "@/components/sections/hero-section";
+import { HeroSection1 } from "@/components/sections/hero-section1";
+import { HeroSection2 } from "@/components/sections/hero-section2";
 import { CompaniesSection } from "@/components/sections/companies-section";
-import { StatsSection } from "@/components/sections/stats-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { generateStructuredData } from "@/lib/seo";
 // Import the new component
@@ -18,9 +18,9 @@ export default function HomePage() {
         }}
       />
       <div className="min-h-screen">
-          <HeroSection />
+          <HeroSection1 />
+          <HeroSection2 />
           <CompaniesSection />
-          <StatsSection />
           <TestimonialsSection />
 
         

@@ -1,28 +1,24 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Users, Award, MessageSquare, LucideIcon } from "lucide-react" // Import LucideIcon type
+import { Users, Rocket, Landmark, Briefcase, LucideIcon } from "lucide-react"
 import { motion } from "framer-motion"
-import { FadeIn } from "@/components/animations/fade-in"
 import { StaggerContainer, StaggerItem } from "@/components/animations/stagger-container"
 import { Counter } from "@/components/animations/counter"
 import { useEffect, useState } from "react"
+import { FadeIn } from "../animations/fade-in"
 
-// 1. Create a map to link strings to components
 const iconMap: Record<string, LucideIcon> = {
   Users: Users,
-  Code: Code,
-  Award: Award,
-  MessageSquare: MessageSquare,
+  Rocket: Rocket,
+  Landmark: Landmark,
+  Briefcase: Briefcase,
 }
 
 interface Stats {
   icon: string;
   value: string;
   label: string;
-  color: string;
-  bg: string;
-  glow: string;
 }
 
 export function StatsSection() {
@@ -44,63 +40,57 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative py-12">
+      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_55%)] pointer-events-none" />
         <FadeIn className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Impact by Numbers</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
-            Building digital experiences that connect and scale.
-          </p>
-        </FadeIn>
-
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
+      <div className="relative mx-auto max-w-6xl px-4">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                    Impact by Numbers
+                  </h2>
+                  <p className="text-muted-foreground max-w-xl mx-auto">
+                    Building digital experiences that connect and scale.
+                  </p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => {
-            // 2. Look up the component using the string from JSON
-            // We use 'as keyof typeof iconMap' to make TypeScript happy
             const MyIcon = iconMap[stat.icon as keyof typeof iconMap]
-
-            // 3. Safety check: If the icon name in JSON doesn't match the map, don't crash
             if (!MyIcon) return null;
-
+            
             return (
               <StaggerItem key={index}>
                 <motion.div
-                  className="group relative"
-                  whileHover={{ y: -8 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.65, ease: "easeOut" }}
+                  className="h-full"
                 >
-                  <div className={`absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 ${stat.glow}`} />
-
-                  <Card className="bg-transparent border-none shadow-none h-full transition-colors duration-500">
-                    <CardContent className="p-8 flex flex-col items-center text-center">
-                      
-                      <div className={`relative flex items-center justify-center w-16 h-16 rounded-2xl bg-muted/30 mb-6 transition-all duration-500 group-hover:scale-110 ${stat.bg}`}>
-                        {/* Now MyIcon is a valid component */}
-                        <MyIcon className={`h-8 w-8 transition-colors duration-500 ${stat.color}`} />
+                  <Card className="h-full rounded-[2rem] border border-border/40 bg-background/90 shadow-2xl shadow-primary/5 transition-all duration-500 hover:-translate-y-1">
+                    <CardContent className="p-8 flex flex-col items-center text-center gap-5">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-primary/10 text-primary">
+                        <MyIcon className="h-7 w-7" strokeWidth={1.5} />
                       </div>
-
-                      <div className="space-y-1">
-                        <Counter 
-                          value={stat.value} 
-                          className="text-4xl md:text-5xl font-extrabold tracking-tighter" 
+                      <div className="space-y-2">
+                        <Counter value={stat.value} className="text-4xl font-semibold tracking-tight text-foreground" />
+                        <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">{stat.label}</p>
+                      </div>
+                      <div className="mt-auto w-full overflow-hidden rounded-full bg-border/30">
+                        <motion.div
+                          className="h-1 rounded-full bg-gradient-to-r from-primary to-purple-500"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "100%" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.3 + index * 0.06 }}
                         />
-                        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground/70 group-hover:text-foreground transition-colors duration-300">
-                          {stat.label}
-                        </p>
                       </div>
-
-                      <div className="mt-6 w-12 h-1 bg-muted rounded-full overflow-hidden">
-                        <div className={`h-full w-0 group-hover:w-full transition-all duration-700 ease-out bg-current ${stat.color}`} />
-                      </div>
-
                     </CardContent>
                   </Card>
                 </motion.div>
               </StaggerItem>
             )
           })}
-        </StaggerContainer>
+        </div>
       </div>
+</FadeIn>
     </section>
   )
 }

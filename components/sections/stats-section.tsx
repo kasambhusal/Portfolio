@@ -40,8 +40,8 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section className="relative py-12">
-      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_55%)] pointer-events-none" />
+    <section className="relative py-12 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_55%)] ">
+      <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" />
         <FadeIn className="text-center mb-16">
       <div className="relative mx-auto max-w-6xl px-4">
                   <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
@@ -50,7 +50,7 @@ export function StatsSection() {
                   <p className="text-muted-foreground max-w-xl mx-auto">
                     Building digital experiences that connect and scale.
                   </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-5">
           {stats.map((stat, index) => {
             const MyIcon = iconMap[stat.icon as keyof typeof iconMap]
             if (!MyIcon) return null;
@@ -72,15 +72,6 @@ export function StatsSection() {
                       <div className="space-y-2">
                         <Counter value={stat.value} className="text-4xl font-semibold tracking-tight text-foreground" />
                         <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">{stat.label}</p>
-                      </div>
-                      <div className="mt-auto w-full overflow-hidden rounded-full bg-border/30">
-                        <motion.div
-                          className="h-1 rounded-full bg-gradient-to-r from-primary to-purple-500"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "100%" }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.3 + index * 0.06 }}
-                        />
                       </div>
                     </CardContent>
                   </Card>

@@ -314,12 +314,12 @@ export function HeroSection1() {
       </div>
 
       {/* Decorations */}
-      <motion.div style={{ y: y1 }} className="absolute top-1/4 left-20 opacity-20 pointer-events-none hidden sm:block">
+      {/* <motion.div style={{ y: y1 }} className="absolute top-1/4 left-20 opacity-20 pointer-events-none hidden sm:block">
         <Terminal className="w-24 h-24 text-primary" />
       </motion.div>
       <motion.div style={{ y: y2 }} className="absolute bottom-1/4 right-20 opacity-20 pointer-events-none hidden sm:block">
         <div className="w-16 h-16 border-4 border-dashed border-purple-500 rounded-full animate-spin-slow" />
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

@@ -119,5 +119,12 @@
     "image_url": "/institutions/leo_matribhumi-logo.webp",
     "alt_text": "Leo Club Logo",
     "website_link": "https://www.instagram.com/leo_matribhumi/"
+  },
+  {
+    "id": 18,
+    "name": "Meridian Scholars",
+    "image_url": "https://www.meridianscholars.org/logo.svg",
+    "alt_text": "Meridian Scholars Logo",
+    "website_link": "https://www.meridianscholars.org/"
   }
 ]

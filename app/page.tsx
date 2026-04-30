@@ -5,6 +5,8 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { generateStructuredData } from "@/lib/seo";
 // Import the new component
 import { WarmWelcome } from "@/components/sections/warm-welcome"; 
+import Countries from "@/components/sections/countries";
+import { StatsSection } from "@/components/sections/stats-section";
 
 export default function HomePage() {
   const personStructuredData = generateStructuredData("person", {});
@@ -20,7 +22,10 @@ export default function HomePage() {
       <div className="min-h-screen">
           <HeroSection1 />
           <HeroSection2 />
+          <StatsSection />
+
           <CompaniesSection />
+          <Countries/>
           <TestimonialsSection />
 
         

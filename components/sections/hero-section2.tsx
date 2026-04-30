@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { StatsSection } from "./stats-section";
-// import Countries from "./countries";
 
 const SERVICES = [
   "Web App Development",
@@ -59,7 +58,7 @@ function CircularCarousel() {
           {/* Inner label */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <h2 className="text-lg sm:text-2xl font-bold text-foreground/70 tracking-tight">My</h2>
+              {/* <h2 className="text-lg sm:text-2xl font-bold text-foreground/70 tracking-tight">My</h2> */}
               <h2 className="text-xl sm:text-3xl font-bold text-gradient tracking-tight">Services</h2>
             </div>
           </div>
@@ -147,9 +146,8 @@ export function HeroSection2() {
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-20">
 
-        <StatsSection />
 
-        {/* <Countries/> */}
+
       </div>
     </section>
   );

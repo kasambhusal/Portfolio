@@ -88,8 +88,8 @@ export default function BlogsPage({ initialBlogs, initialTotalPages }: BlogsPage
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              Writing & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Stories</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">
+              Writing & Stories
             </h1>
             <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto leading-relaxed">
               My journey through hackathons, achievements, and deep dives into technology.

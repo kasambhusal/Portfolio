@@ -4,75 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0); /* Pure white */
-  --foreground: oklch(0.25 0 0); /* Dark gray-800 equivalent */
-  --card: oklch(0.97 0 0); /* Light gray background */
-  --card-foreground: oklch(0.25 0 0); /* Dark text on cards */
-  --popover: oklch(1 0.02 0 / 0.8); /* Semi-transparent white */
-  --popover-foreground: oklch(0.25 0 0);
-  --primary: oklch(0.25 0 0); /* Dark primary */
-  --primary-foreground: oklch(1 0 0); /* White text on primary */
-  --secondary: oklch(0.65 0.15 280); /* Purple accent */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.97 0 0); /* Light muted background */
-  --muted-foreground: oklch(0.45 0 0); /* Gray text */
-  --accent: oklch(0.65 0.15 280); /* Purple accent */
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.55 0.25 25); /* Red for destructive actions */
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0 0); /* Light border */
-  --input: oklch(0.97 0 0); /* Light input background */
-  --ring: oklch(0.65 0.15 280 / 0.5); /* Purple focus ring */
-  --chart-1: oklch(0.65 0.15 280);
-  --chart-2: oklch(0.6 0.2 45);
-  --chart-3: oklch(0.4 0.1 200);
-  --chart-4: oklch(0.45 0 0);
-  --chart-5: oklch(0.97 0 0);
+  --background: oklch(0.99 0.005 240); /* Near-white with a cool blue tint */
+  --foreground: oklch(0.18 0.02 260); /* Deep navy-tinted dark text */
+  --card: oklch(0.96 0.008 240); /* Faint blue-tinted card */
+  --card-foreground: oklch(0.18 0.02 260);
+  --popover: oklch(0.98 0.005 240 / 0.85);
+  --popover-foreground: oklch(0.18 0.02 260);
+  --primary: oklch(0.18 0.04 260); /* Deep navy primary */
+  --primary-foreground: oklch(0.99 0.005 240);
+  --secondary: oklch(0.6 0.18 195); /* Electric teal/cyan accent */
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.94 0.01 240); /* Cool muted surface */
+  --muted-foreground: oklch(0.48 0.02 250);
+  --accent: oklch(0.6 0.18 195); /* Electric teal */
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.55 0.22 20);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.01 240); /* Cool-tinted border */
+  --input: oklch(0.95 0.008 240);
+  --ring: oklch(0.6 0.18 195 / 0.45);
+  --chart-1: oklch(0.6 0.18 195);
+  --chart-2: oklch(0.55 0.2 260);
+  --chart-3: oklch(0.5 0.15 160);
+  --chart-4: oklch(0.65 0.14 220);
+  --chart-5: oklch(0.88 0.01 240);
   --radius: 0.5rem;
-  --sidebar: oklch(0.97 0 0);
-  --sidebar-foreground: oklch(0.25 0 0);
-  --sidebar-primary: oklch(0.65 0.15 280);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.6 0.2 45);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.65 0.15 280 / 0.5);
+  --sidebar: oklch(0.95 0.01 245);
+  --sidebar-foreground: oklch(0.18 0.02 260);
+  --sidebar-primary: oklch(0.6 0.18 195);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.55 0.2 260);
+  --sidebar-accent-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(0.88 0.01 240);
+  --sidebar-ring: oklch(0.6 0.18 195 / 0.45);
   --tw-ring-color: var(--ring);
 }
 
 .dark {
-  --background: oklch(0.08 0 0); /* Very dark background */
-  --foreground: oklch(0.95 0 0); /* Light text */
-  --card: oklch(0.12 0 0); /* Dark card background */
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0 / 0.9);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.95 0 0); /* Light primary in dark mode */
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.7 0.15 280); /* Brighter purple in dark */
-  --secondary-foreground: oklch(0.08 0 0);
-  --muted: oklch(0.15 0 0); /* Dark muted */
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.7 0.15 280); /* Bright purple accent */
-  --accent-foreground: oklch(0.08 0 0);
-  --destructive: oklch(0.6 0.25 25);
-  --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.2 0 0); /* Dark border */
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.7 0.15 280 / 0.5);
-  --chart-1: oklch(0.7 0.15 280);
-  --chart-2: oklch(0.65 0.2 45);
-  --chart-3: oklch(0.6 0.15 200);
-  --chart-4: oklch(0.6 0 0);
-  --chart-5: oklch(0.15 0 0);
-  --sidebar: oklch(0.1 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.7 0.15 280);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.65 0.2 45);
-  --sidebar-accent-foreground: oklch(0.08 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.7 0.15 280 / 0.5);
+  --background: oklch(0.1 0.02 265); /* Deep midnight navy */
+  --foreground: oklch(0.93 0.01 220); /* Soft cool white text */
+  --card: oklch(0.14 0.025 265); /* Slightly lighter navy card */
+  --card-foreground: oklch(0.93 0.01 220);
+  --popover: oklch(0.14 0.025 265 / 0.92);
+  --popover-foreground: oklch(0.93 0.01 220);
+  --primary: oklch(0.93 0.01 220); /* Light primary in dark mode */
+  --primary-foreground: oklch(0.1 0.02 265);
+  --secondary: oklch(0.68 0.2 195); /* Bright electric teal */
+  --secondary-foreground: oklch(0.08 0.02 265);
+  --muted: oklch(0.18 0.025 265); /* Dark navy muted */
+  --muted-foreground: oklch(0.58 0.03 240);
+  --accent: oklch(0.68 0.2 195); /* Electric teal accent */
+  --accent-foreground: oklch(0.08 0.02 265);
+  --destructive: oklch(0.62 0.24 20);
+  --destructive-foreground: oklch(0.93 0.01 220);
+  --border: oklch(0.22 0.03 265); /* Deep navy border */
+  --input: oklch(0.17 0.025 265);
+  --ring: oklch(0.68 0.2 195 / 0.45);
+  --chart-1: oklch(0.68 0.2 195);
+  --chart-2: oklch(0.6 0.22 260);
+  --chart-3: oklch(0.58 0.18 160);
+  --chart-4: oklch(0.65 0.16 220);
+  --chart-5: oklch(0.18 0.025 265);
+  --sidebar: oklch(0.12 0.022 265);
+  --sidebar-foreground: oklch(0.93 0.01 220);
+  --sidebar-primary: oklch(0.68 0.2 195);
+  --sidebar-primary-foreground: oklch(0.08 0.02 265);
+  --sidebar-accent: oklch(0.6 0.22 260);
+  --sidebar-accent-foreground: oklch(0.93 0.01 220);
+  --sidebar-border: oklch(0.22 0.03 265);
+  --sidebar-ring: oklch(0.68 0.2 195 / 0.45);
   --tw-ring-color: var(--ring);
 }
 

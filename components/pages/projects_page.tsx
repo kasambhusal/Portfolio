@@ -55,8 +55,8 @@ export default function ProjectsPage({ initialProjects }: { initialProjects: Pro
             transition={{ duration: 0.6 }}
             className="max-w-3xl flex flex-col items-center text-center mx-auto"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Works</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">
+              Selected Works
             </h1>
             <p className="text-xl text-muted-foreground text-pretty max-w-2xl leading-relaxed">
               A few selected projects spanning software development, machine learning, and creative solutions, reflecting my hands-on learning and real-world impact.

@@ -59,8 +59,8 @@ export default function SkillsPage({
         <div className="container mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
          
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              Expertise & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Impact</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">
+              Expertise & Impact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A breakdown of my technical stack and the honors I've earned while building solutions that matter.

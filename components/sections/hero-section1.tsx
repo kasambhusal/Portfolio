@@ -224,15 +224,14 @@ export function HeroSection1() {
 
          
 
-          <motion.h1
+         <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
             className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6"
           >
             Hi, I&apos;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
-              Mr. Kasam
+          <span className="text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">    Mr. Kasam
             </span>
           </motion.h1>
 

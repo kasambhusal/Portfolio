@@ -60,8 +60,8 @@ export default function ContactPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
         <div className="container mx-auto px-4 text-center">
            
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-              Let's build <span className="text-primary italic">together.</span>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">
+              Let&apos;s build together.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Have a question or a brilliant idea? I’m all ears. 

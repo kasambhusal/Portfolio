@@ -21,10 +21,10 @@ export default function HomePage() {
       />
       <div className="min-h-screen">
           <HeroSection1 />
+          <CompaniesSection />
           <HeroSection2 />
           <StatsSection />
 
-          <CompaniesSection />
           <Countries/>
           <TestimonialsSection />
 

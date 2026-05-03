@@ -50,7 +50,7 @@ export function StatsSection() {
                   <p className="text-muted-foreground max-w-xl mx-auto">
                     Building digital experiences that connect and scale.
                   </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-15">
           {stats.map((stat, index) => {
             const MyIcon = iconMap[stat.icon as keyof typeof iconMap]
             if (!MyIcon) return null;

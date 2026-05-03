@@ -3,10 +3,13 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
-const countries = ["Nepal", "Singapore", "India", "United Kingdom"];
+const countries = [
+  { name: "Nepal",          file: "nepal" },
+  { name: "Singapore",      file: "singapore" },
+  { name: "India",          file: "india" },
+  { name: "United Kingdom", file: "uk" },
+];
 
-// ─── Per-country animated word ────────────────────────────────────────────────
-// Hooks must live at the top level of a component, so we isolate each country.
 interface CountryWordProps {
   country: string;
   index: number;
@@ -20,23 +23,24 @@ const CountryWord = ({ country, index, total, scrollYProgress }: CountryWordProp
   const end     = start + section;
   const mid     = start + section / 2;
 
-  // Fade: invisible → visible → invisible
   const opacity = useTransform(
     scrollYProgress,
     [start, start + section * 0.25, end - section * 0.25, end],
     [0, 1, 1, 0]
   );
-
-  // Subtle vertical drift
   const rawY = useTransform(scrollYProgress, [start, end], ['6px', '-6px']);
   const y    = useSpring(rawY, { stiffness: 180, damping: 30, mass: 0.6 });
-
-  // Very subtle scale pulse
   const scale = useTransform(scrollYProgress, [start, mid, end], [0.94, 1, 0.94]);
 
   return (
     <motion.span
-      style={{ opacity, y, scale, display: 'inline-block', position: 'absolute', left: 0, top: 0 }}
+      style={{
+        opacity, y, scale,
+        display: 'inline-block',
+        position: 'absolute',
+        left: 0, top: 0,
+        whiteSpace: 'nowrap',
+      }}
       aria-hidden={index !== 0}
     >
       {country}
@@ -44,7 +48,59 @@ const CountryWord = ({ country, index, total, scrollYProgress }: CountryWordProp
   );
 };
 
-// ─── Main component ───────────────────────────────────────────────────────────
+interface FlagBgProps {
+  file: string;
+  index: number;
+  total: number;
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
+}
+
+const FlagBg = ({ file, index, total, scrollYProgress }: FlagBgProps) => {
+  const section = 1 / total;
+  const start   = index * section;
+  const end     = start + section;
+
+  // Keep image very subtle — the pill is the legibility solution
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, start + section * 0.18, end - section * 0.18, end],
+    [0, 0.18, 0.18, 0]
+  );
+
+  return (
+    <motion.div
+      aria-hidden
+      style={{
+        opacity,
+        position: 'absolute',
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+      }}
+    >
+      <picture style={{ display: 'contents' }}>
+        <source media="(max-width: 767px)" srcSet={`/countries/small/${file}.png`} />
+        <source media="(min-width: 768px)"  srcSet={`/countries/large/${file}.png`} />
+        <img
+          src={`/countries/large/${file}.png`}
+          alt=""
+          aria-hidden
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+            // Desaturate + very slightly darken so any image reads as atmosphere
+            filter: 'saturate(0.65) brightness(0.95)',
+            transform: 'scale(1.04)', // slight oversize prevents edge bleed
+          }}
+        />
+      </picture>
+    </motion.div>
+  );
+};
+
 const Countries = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -54,40 +110,75 @@ const Countries = () => {
   });
 
   return (
-    /*
-     * Scroll driver: each country gets 60 vh of scroll travel.
-     * The sentence itself stays compact — only the scroll-height drives the
-     * animation, not the visual height.
-     */
     <div
       ref={containerRef}
       style={{ height: `${countries.length * 60}vh` }}
       className="relative w-full"
     >
-      {/* Sticky sentence — stays centred in the viewport while the user scrolls */}
-      <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none select-none">
-        <p
-          className="flex flex-wrap items-baseline gap-x-[0.35em] gap-y-1
-                     text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-                     font-semibold text-slate-800 px-6 text-center leading-tight"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          <span className="text-slate-400 font-normal italic">Worked with clients&nbsp;across</span>
+      <div className="sticky top-0 h-screen flex items-center justify-center select-none overflow-hidden">
 
-          {/* Fixed-width slot so the sentence doesn't jump as country names vary */}
+        {/* Flag backgrounds — very low opacity, atmosphere only */}
+        {countries.map(({ file }, i) => (
+          <FlagBg
+            key={file}
+            file={file}
+            index={i}
+            total={countries.length}
+            scrollYProgress={scrollYProgress}
+          />
+        ))}
+
+        {/*
+         * Frosted glass pill — the professional solution for text-over-image.
+         * backdrop-filter blurs whatever is behind the pill (the flag),
+         * the semi-transparent white fill lightens it further,
+         * the hairline white border adds definition.
+         * Text is always crisp and legible regardless of image content.
+         */}
+        <div
+          className="relative z-10 flex flex-wrap items-baseline justify-center gap-x-[0.3em] gap-y-1 pointer-events-none"
+          style={{
+            padding: '20px 40px 24px',
+            borderRadius: '999px',
+            background: 'rgba(255, 255, 255, 0.62)',
+            backdropFilter: 'blur(20px) saturate(1.5)',
+            WebkitBackdropFilter: 'blur(20px) saturate(1.5)',
+            border: '0.5px solid rgba(255, 255, 255, 0.9)',
+            boxShadow: '0 2px 32px rgba(0,0,0,0.06), inset 0 0.5px 0 rgba(255,255,255,0.8)',
+          }}
+        >
           <span
-            className="relative inline-block text-slate-900"
-            style={{ minWidth: '9ch' }}  /* wide enough for "United Kingdom" proportionally */
+            className="font-normal italic"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 'clamp(1.1rem, 2.8vw, 2rem)',
+              color: '#94a3b8',
+              whiteSpace: 'nowrap',
+            }}
           >
-            {/* Invisible spacer keeps layout stable */}
-            <span aria-hidden className="opacity-0 pointer-events-none">
+            Worked with clients&nbsp;across&nbsp;
+          </span>
+
+          {/* Country name slot */}
+          <span
+            className="relative inline-block"
+            style={{
+              minWidth: '7ch',
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 'clamp(1.1rem, 2.8vw, 2rem)',
+              fontWeight: 700,
+              color: '#0f172a',
+            }}
+          >
+            {/* Invisible spacer keeps pill width stable */}
+            <span aria-hidden className="opacity-0 pointer-events-none" style={{ whiteSpace: 'nowrap' }}>
               United Kingdom
             </span>
 
-            {countries.map((country, i) => (
+            {countries.map(({ name }, i) => (
               <CountryWord
-                key={country}
-                country={country}
+                key={name}
+                country={name}
                 index={i}
                 total={countries.length}
                 scrollYProgress={scrollYProgress}
@@ -95,8 +186,17 @@ const Countries = () => {
             ))}
           </span>
 
-          <span className="text-slate-400 font-normal">.</span>
-        </p>
+          <span
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 'clamp(1.1rem, 2.8vw, 2rem)',
+              color: '#94a3b8',
+              fontWeight: 400,
+            }}
+          >
+            .
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -19,6 +21,11 @@ export const metadata: Metadata = generateSEO({
     "Mr. Kasam is a curious technologist and learner exploring AI, software, and human-centered technology. Personal portfolio, projects, and journey.",
 })
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['700'],
+});
 export default function RootLayout({
   children,
 }: {
@@ -54,7 +61,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable} antialiased`}
       >
         {/* Google Analytics */}
         <Script

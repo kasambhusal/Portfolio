@@ -182,9 +182,9 @@ export function CompaniesSection() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
 
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Trusted by Amazing Institutions
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight lg:whitespace-nowrap">
+  Trusted by Amazing Institutions
+</h2>
 
             <p className="text-base text-muted-foreground leading-relaxed">
               I&apos;ve had the privilege to work with and contribute to these

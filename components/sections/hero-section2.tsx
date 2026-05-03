@@ -1,154 +1,232 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { StatsSection } from "./stats-section";
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const SERVICES = [
-  "Web App Development",
-  "Mobile App Development",
-  "AI Automation",
-  "Computer Vision",
-  "Chatbot Integration",
-  "Graphics Designing",
-  "SEO",
-  "Social Media Marketing",
-];
+  {
+    name: 'Web App',
+    bullets: ['Business Websites', 'Full-stack Apps', 'Complex platforms'],
+    hi: [0],
+  },
+  {
+    name: 'Mobile App',
+    bullets: ['Cross-platform', 'Modern UI', 'Advanced Features'],
+    hi: [0],
+  },
+  {
+    name: 'AI Automation',
+    bullets: ['Workflow Automation', 'WhatsApp · Instagram', 'Messenger Bots'],
+    hi: [0, 1],
+  },
+  {
+    name: 'Chatbot Integration',
+    bullets: ['LLM-powered', 'Platform Embed', 'Precise Answers'],
+    hi: [0],
+  },
+  {
+    name: 'Graphics Designing',
+    bullets: ['Logo & Brand', 'Banners', 'UI / UX'],
+    hi: [2],
+  },
+  {
+    name: 'SEO',
+    bullets: ['Niche SEO', 'Social Pages', 'Technical Audit'],
+    hi: [0],
+  },
+  {
+    name: 'Computer Vision',
+    bullets: ['Detection', 'Recognition', 'Real-time CV'],
+    hi: [0],
+  },
+  {
+    name: 'Social Media Marketing',
+    bullets: ['Meta & Google Ads', 'AI Video Creation', 'Brand Clips'],
+    hi: [1, 2],
+  },
+] as const;
 
-function RevealLine({ delay = 0 }: { delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
+const N = SERVICES.length;
 
+// ─── Left progress rail ───────────────────────────────────────────────────────
+function Rail({ active }: { active: number }) {
   return (
-    <div ref={ref} className="w-full h-px bg-border/40 overflow-hidden my-16 sm:my-24 relative">
-      <motion.div
-        initial={{ x: "-100%" }}
-        whileInView={{ x: "100%" }}
-        viewport={{ once: true }}
-        transition={{ delay, duration: 1.5, ease: "easeInOut" }}
-        className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent"
-      />
+    <div className="flex flex-col items-center justify-center gap-3 w-[52px] shrink-0 py-8 border-r border-border">
+      {SERVICES.map((_, i) => (
+        <motion.div
+          key={i}
+          className="w-[3px] rounded-full"
+          animate={{
+            height: i === active ? 24 : 3,
+            backgroundColor:
+              i === active
+                ? 'var(--secondary)'   // electric teal
+                : 'var(--border)',
+          }}
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+        />
+      ))}
     </div>
   );
 }
 
-function CircularCarousel() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  });
-
-  const items = SERVICES.length;
-  const anglePerItem = (360 / items) * (Math.PI / 180);
-
-  return (
-    <div ref={containerRef} className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background gradients */}
-      <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-30">
-        <div className="w-[800px] h-[800px] bg-secondary/10 blur-[150px] rounded-full absolute -top-40 -left-40" />
-        <div className="w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full absolute bottom-0 right-0" />
-      </div>
-
-      {/* Central circle - viewport indicator */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px]">
-          {/* Outer circle */}
-          <div className="absolute inset-0 rounded-full border-2 border-border/40 bg-gradient-to-b from-background/50 to-background/20 backdrop-blur-sm" />
-
-          {/* Inner label */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              {/* <h2 className="text-lg sm:text-2xl font-bold text-foreground/70 tracking-tight">My</h2> */}
-              <h2 className="text-xl sm:text-3xl font-bold text-gradient tracking-tight">Services</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Carousel items in circular motion */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 1200 800"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {SERVICES.map((service, index) => {
-          const angle = anglePerItem * index;
-          const radius = 280; // Distance from center
-          const x = 600 + radius * Math.cos(angle - Math.PI / 2);
-          const y = 400 + radius * Math.sin(angle - Math.PI / 2);
-
-          return (
-            <g key={index}>
-              <foreignObject x={x - 120} y={y - 35} width="240" height="70">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="h-full flex items-center justify-center"
-                >
-                  <CarouselItem service={service} progress={scrollYProgress} index={index} />
-                </motion.div>
-              </foreignObject>
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-function CarouselItem({
-  service,
-  progress,
-  index,
-}: {
-  service: string;
-  progress: any;
+// ─── Single service frame ─────────────────────────────────────────────────────
+interface FrameProps {
+  service: (typeof SERVICES)[number];
   index: number;
-}) {
-  const items = SERVICES.length;
-  const itemProgress = useTransform(progress, [0, 1], [0, items]);
+  isActive: boolean;
+}
 
-  const opacity = useTransform(itemProgress, (latest) => {
-    const distance = Math.abs(latest - index);
-    if (distance > 1) return 0.3;
-    return 1 - distance * 0.3;
-  });
-
-  const scale = useTransform(itemProgress, (latest) => {
-    const distance = Math.abs(latest - index);
-    if (distance > 1) return 0.85;
-    return 1 - distance * 0.15;
-  });
-
-  const y = useTransform(itemProgress, (latest) => {
-    const distance = latest - index;
-    return Math.sin(distance * Math.PI) * 15;
-  });
-
+function ServiceFrame({ service, index, isActive }: FrameProps) {
   return (
     <motion.div
-      style={{ opacity, scale, y }}
-      className="px-4 py-3 rounded-lg border border-border/50 bg-card/90 shadow-lg hover:shadow-xl transition-shadow duration-300 whitespace-nowrap text-sm sm:text-base font-semibold text-foreground text-center"
+      className="absolute inset-0 flex flex-col justify-center px-10 sm:px-14 overflow-hidden"
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+      style={{ pointerEvents: isActive ? 'auto' : 'none' }}
     >
-      {service}
+      {/* Subtle radial teal glow behind content */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 60% at 40% 50%, color-mix(in oklch, var(--secondary) 8%, transparent), transparent)',
+        }}
+      />
+
+      
+
+      <div className="relative z-10">
+        {/* Index label */}
+        <motion.p
+          className="font-mono text-[11px] tracking-[0.18em] mb-4"
+          style={{ color: 'var(--secondary)' }}
+          animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 8 }}
+          transition={{ duration: 0.5 }}
+        >
+          {String(index + 1).padStart(2, '0')}&nbsp;&nbsp;—&nbsp;&nbsp;Service
+        </motion.p>
+
+        {/* Service name — clip-reveal */}
+        <div className="overflow-hidden">
+          <motion.h2
+            className="font-serif leading-[1.05] tracking-tight text-foreground"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: 'clamp(1.9rem, 5.5vw, 4.4rem)',
+              fontWeight: 700,
+            }}
+            animate={{ y: isActive ? '0%' : '110%' }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {service.name}
+          </motion.h2>
+        </div>
+
+        {/* Bullet pills */}
+        <motion.div
+          className="flex flex-wrap gap-2 mt-5"
+          animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 10 }}
+          transition={{ duration: 0.55, delay: 0.12 }}
+        >
+          {service.bullets.map((b, j) => {
+            const isHighlight = (service.hi as readonly number[]).includes(j);
+            return (
+              <span
+                key={b}
+                className="font-mono text-[11px] tracking-[0.12em] uppercase px-3 py-[5px] rounded-full border"
+                style={
+                  isHighlight
+                    ? {
+                        borderColor: 'color-mix(in oklch, var(--secondary) 45%, transparent)',
+                        color: 'var(--secondary)',
+                        background: 'color-mix(in oklch, var(--secondary) 8%, transparent)',
+                      }
+                    : {
+                        borderColor: 'var(--border)',
+                        color: 'var(--muted-foreground)',
+                        background: 'var(--card)',
+                      }
+                }
+              >
+                {b}
+              </span>
+            );
+          })}
+        </motion.div>
+      </div>
+
     </motion.div>
   );
 }
 
+// ─── Main export ──────────────────────────────────────────────────────────────
 export function HeroSection2() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const driverRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const driver = driverRef.current;
+    if (!driver) return;
+
+    function onScroll() {
+      const rect = driver!.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const scrollable = driver!.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const p = Math.max(0, Math.min(1, scrolled / scrollable));
+      const idx = Math.min(N - 1, Math.floor(p * N));
+      setActive(idx);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-background overflow-hidden z-10">
-      <CircularCarousel />
+    <div
+      ref={driverRef}
+      style={{ height: `${N * 60}vh` }}
+      className="relative w-full"
+    >
+      <div className="sticky top-0 h-screen flex overflow-hidden bg-background">
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-20">
+        <Rail active={active} />
 
+        {/* Stage */}
+        <div className="relative flex-1">
+          {/* Top-right label */}
+          <span
+            className="absolute top-15 left-[40vw] text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+          >
+            What I offer
+          </span>
 
+          {/* Bottom-right counter */}
+          <span
+            className="absolute bottom-7 right-10 font-mono text-[11px] tracking-[0.1em] text-muted-foreground"
+          >
+            <span className="text-foreground font-medium">
+              {String(active + 1).padStart(2, '0')}
+            </span>
+            &nbsp;/&nbsp;{String(N).padStart(2, '0')}
+          </span>
+
+          {/* Frames */}
+          {SERVICES.map((s, i) => (
+            <ServiceFrame
+              key={s.name}
+              service={s}
+              index={i}
+              isActive={i === active}
+            />
+          ))}
+        </div>
 
       </div>
-    </section>
+    </div>
   );
 }

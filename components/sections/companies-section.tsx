@@ -24,6 +24,17 @@ const MARQUEE_CSS = `
   }
 `;
 
+function getResponsiveSrc(src: string) {
+  // External images → return as-is
+  if (src.startsWith("http")) return src;
+
+  // Remove .webp
+  const base = src.replace(".webp", "");
+
+  // Default to 168 (best balance)
+  return `${base}-168.webp`;
+}
+
 function useInjectStyles(css: string) {
   useEffect(() => {
     const id = "marquee-keyframes";
@@ -66,18 +77,18 @@ function LogoCard({ company }: { company: Company }) {
         group-hover:-translate-y-3
       ">
         <Image
-          src={company.image_url || "/placeholder.svg"}
-          alt={company.alt_text}
-          width={120}
-          height={48}
-          className="
-            max-h-full w-auto object-contain
-            opacity-40 grayscale
-            group-hover:opacity-100 group-hover:grayscale-0
-            transition-all duration-300
-          "
-          unoptimized={company.image_url?.startsWith("http")}
-        />
+  src={getResponsiveSrc(company.image_url)}
+  alt={company.alt_text}
+  width={168}
+  height={84}
+  sizes="(max-width: 640px) 84px, 120px"
+  className="
+    max-h-full w-auto object-contain
+    opacity-40 grayscale
+    group-hover:opacity-100 group-hover:grayscale-0
+    transition-all duration-300
+  "
+/>
       </div>
 
       {/* Name slides up */}

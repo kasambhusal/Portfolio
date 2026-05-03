@@ -224,16 +224,13 @@ export function HeroSection1() {
 
          
 
-         <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.7 }}
+         <h1
             className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6"
           >
             Hi, I&apos;m{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-br from-foreground to-accent">    Mr. Kasam
             </span>
-          </motion.h1>
+          </h1>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -259,19 +256,11 @@ export function HeroSection1() {
             </h2>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12"
-          >
-            Helping businesses worldwide grow, scale, and innovate through technology.
-          </motion.p>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
+  Helping businesses worldwide grow, scale, and innovate through technology.
+</p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+          <div
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/projects">
@@ -284,7 +273,7 @@ export function HeroSection1() {
                 <Download className="mr-2 h-4 w-4" /> Resume
               </Button>
             </Link>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}

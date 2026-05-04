@@ -200,9 +200,12 @@ export function HeroSection2() {
         <div className="relative flex-1">
           {/* Top-right label */}
           <span
-            className="absolute top-15 left-[40vw] text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+            className="absolute top-15 "
           >
+            <h1 className='w-screen text-center text-4xl md:text-5xl font-bold mb-6 tracking-tight'>
             What I offer
+
+            </h1>
           </span>
 
           {/* Bottom-right counter */}

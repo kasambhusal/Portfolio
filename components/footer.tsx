@@ -35,7 +35,37 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-white/5 pt-12">
           {/* Brand & Bio */}
           <div className="md:col-span-5 space-y-6">
-            <h3 className="text-2xl font-bold tracking-tight">Mr. Kasam</h3>
+            <div className="flex items-center gap-4">
+                <motion.div
+                  className="relative w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0"
+                  style={{ border: "1.5px solid oklch(0.68 0.2 195 / 0.5)" }}
+                  whileHover={{ rotate: 5, scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <img
+                    src="/kasam-picture.png"
+                    alt="Mr. Kasam"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const t = e.currentTarget
+                      t.style.display = "none"
+                      const parent = t.parentElement!
+                      parent.innerHTML = '<span style="font-weight:700;font-size:18px;color:oklch(0.68 0.2 195);display:flex;align-items:center;justify-content:center;height:100%">K</span>'
+                    }}
+                  />
+                  {/* Teal shimmer ring on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl"
+                    style={{ background: "oklch(0.68 0.2 195 / 0.1)" }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                </motion.div>
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-foreground">Mr. Kasam</h3>
+                  <p className="text-sm text-muted-foreground">Full Stack · ML Enthusiast</p>
+                </div>
+              </div>
             <p className="text-muted-foreground text-base max-w-sm leading-relaxed">
               Full Stack Developer and ML Enthusiast building digital products with 
               precision and purpose. Based in Nepal, working worldwide.
@@ -107,7 +137,7 @@ export function Footer() {
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               aria-label="Back to top"
-              className="hover:text-foreground transition-colors flex items-center gap-2"
+              className="hover:text-foreground transition-colors flex items-center gap-2 cursor-pointer"
             >
               Back to top ↑
             </button>

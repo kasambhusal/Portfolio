@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
-import { Geist, Geist_Mono } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -11,9 +10,10 @@ import { Navbar } from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 import { generateSEO, generateStructuredData } from "@/lib/seo"
-import "./globals.css"
 import Script from "next/script"
 import { Footer } from "@/components/footer"
+import "./globals.css"
+import ScrollToTop from "@/components/scroll-to-top";
 
 export const metadata: Metadata = generateSEO({
   title: "Mr. Kasam | Curious Technologist & AI Learner",
@@ -86,12 +86,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <Suspense fallback={null}>
-              <Navbar />
-              <main className="pt-20">{children}</main>
-              <Toaster />
-              <Footer/>
-            </Suspense>
+            <ScrollToTop />
+            <Navbar />
+            <main className="pt-20">{children}</main>
+            <Toaster />
+            <Footer />
           </AuthProvider>
         </ThemeProvider>
 

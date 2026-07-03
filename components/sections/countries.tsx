@@ -83,7 +83,7 @@ const FlagBg = ({ file, index, total, scrollYProgress }: FlagBgProps) => {
         <source media="(min-width: 768px)"  srcSet={`/countries/large/${file}.png`} />
         <img
           src={`/countries/large/${file}.png`}
-          alt=""
+          alt={`Flag of ${file}`}
           aria-hidden
           style={{
             width: '100%',

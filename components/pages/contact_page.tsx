@@ -64,8 +64,8 @@ export default function ContactPage() {
               Let&apos;s build together.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Have a question or a brilliant idea? I’m all ears. 
-              Drop a message below and let’s start something amazing.
+              Have a question or a brilliant idea? I&#8217;m all ears. 
+              Drop a message below and let&#8217;s start something amazing.
             </p>
         </div>
       </section>

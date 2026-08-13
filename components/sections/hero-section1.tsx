@@ -268,7 +268,7 @@ export function HeroSection1() {
                 View My Works <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Link href="https://drive.google.com/file/d/1JBhHA5e-SUnCsh6mW3B-L9HgRv_mS3aQ/view?usp=sharing" passHref>
+            <Link href="https://drive.google.com/file/d/1pfSvqGDfQBVgq1Hohzx4XscwYRRAalu5/view?usp=sharing" passHref>
               <Button variant="outline" size="lg" className="rounded-full px-8" aria-label="Download my resume">
                 <Download className="mr-2 h-4 w-4" /> Resume
               </Button>
